@@ -10,14 +10,14 @@ export function ToolsGrid() {
             {/* Top: text left + note right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div>
-                    <p className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
+                    <p data-aos="fade-right" className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
                         A curated selection of tools that power daily workflow —
                         <span className="text-foreground font-semibold"> battle-tested</span>,
                         <span className="text-foreground font-semibold"> performance-focused</span>,
                         always in the{" "}
                         <span className="text-foreground font-semibold">terminal</span>.
                     </p>
-                    <h2
+                    <h2 data-aos="fade-right"
                         className="text-[clamp(36px,5.5vw,72px)] font-extrabold leading-[0.92]"
                         style={{
                             background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
@@ -31,7 +31,7 @@ export function ToolsGrid() {
                     </h2>
                 </div>
                 <div className="hidden lg:flex items-start justify-end pt-1">
-                    <p className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
+                    <p data-aos="fade-left" className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
                         Vim motions. Tmux panes. CLI-first utilities.
                         No IDEs bloated with plugins I don&apos;t need.
                     </p>
@@ -51,12 +51,12 @@ export function ToolsGrid() {
 
             {/* Tools Grid */}
             <div>
-                <p className="text-center text-[11px] tracking-[.25em] uppercase text-primary font-bold mb-8">
+                <p data-aos="fade-up" className="text-center text-[11px] tracking-[.25em] uppercase text-primary font-bold mb-8">
                     Daily Tools & Environment
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                     {TOOLS.map((tool) => (
-                        <div
+                        <div data-aos="fade-up"
                             key={tool.name}
                             className="bg-card border border-border rounded-2xl px-4 py-3.5 flex items-center justify-between hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200 cursor-default group"
                         >

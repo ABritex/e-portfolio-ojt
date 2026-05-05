@@ -11,13 +11,13 @@ export default function Header() {
 
             <nav className="hidden md:flex items-center gap-1 border border-border rounded px-2 py-1 bg-card">
                 {[
-                    { label: "home", cmd: "~/" },
+                    { label: "", cmd: "~/" },
                     { label: "title-page", cmd: "~/title-page" },
                     { label: "about", cmd: "~/about" },
                 ].map(({ label, cmd }) => (
                     <a
                         key={label}
-                        href={`#${label}`}
+                        href={`${label}`}
                         className="group flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground px-3 py-1.5 rounded transition-colors hover:bg-muted"
                     >
                         <span className="text-accent/50 group-hover:text-accent transition-colors">$</span>

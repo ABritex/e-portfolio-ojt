@@ -51,52 +51,46 @@ const data = {
                     icon: Captions,
                 },
                 {
-                    title: "I.Introduction",
-                    url: "#",
+                    title: "I. Introduction",
+                    url: "/introduction",
                     icon: BookOpen,
                     items: [
-                        { title: "A.Importance of Internship", url: "#" },
-                        { title: "B.Objectives of Internship", url: "#" },
-                        { title: "C.Time and Place", url: "#" },
+                        { title: "A. Importance of Internship", url: "/introduction#importance" },
+                        { title: "B. Objectives of Internship", url: "/introduction#objectives" },
+                        { title: "C. Time and Place", url: "/introduction#time-place" },
                     ],
                 },
                 {
-                    title: "II.Company Profile",
-                    url: "#",
+                    title: "II. Company Profile",
+                    url: "/company-profile",
                     icon: Building2,
                     items: [
-                        { title: "1. Nature of Agency", url: "#" },
-                        { title: "2. Mission / Vision / Goal", url: "#" },
-                        { title: "3. History / Background", url: "#" },
-                        { title: "4. Organizational Structure", url: "#" },
+                        { title: "1. Nature of Agency", url: "/company-profile" },
+                        { title: "2. Mission / Vision / Goal", url: "/company-profile" },
+                        { title: "3. History / Background", url: "/company-profile" },
+                        { title: "4. Organizational Structure", url: "/company-profile" },
                     ],
                 },
                 {
-                    title: "III.Work Experiences",
-                    url: "#",
+                    title: "III. Work Experiences",
+                    url: "/work-experience",
                     icon: Briefcase,
                     items: [
-                        { title: "1. Weekly Reports", url: "#" },
-                        { title: "2. Daily Time Record", url: "#" },
-                        { title: "3. Progress Report", url: "#" },
-                        { title: "4. Analysis Report", url: "#" },
+                        { title: "1. Weekly Reports", url: "/work-experience" },
+                        { title: "2. Daily Time Record", url: "/work-experience" },
+                        { title: "3. Progress Report", url: "/work-experience" },
+                        { title: "4. Analysis Report", url: "/work-experience" },
                     ],
                 },
                 {
-                    title: "IV Assessment",
-                    url: "#",
+                    title: "IV. Assessment",
+                    url: "/assessment",
                     icon: ClipboardCheck,
                 },
                 {
                     title: "Appendices",
-                    url: "#",
+                    url: "/appendices",
                     icon: Paperclip,
-                    items: [
-                        { title: "Appendix A", url: "#" },
-                        { title: "Appendix B", url: "#" },
-                        { title: "Appendix C", url: "#" },
-                        { title: "Appendix D", url: "#" },
-                    ],
                 },
             ],
         },
@@ -105,12 +99,12 @@ const data = {
     links: [
         {
             title: "Resume",
-            url: "#",
+            url: "/resume",
             icon: <Link className="h-4 w-4" />,
         },
         {
             title: "Email Me",
-            url: "#",
+            url: "/email",
             icon: <Mail className="h-4 w-4" />,
         },
         // {
@@ -138,7 +132,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarContent>
 
             <SidebarFooter className="text-xs text-muted-foreground px-4 py-3">
-                © 2025 Nicholas Abeleda
+                © 2026 Nicholas Abeleda
             </SidebarFooter>
 
             <SidebarRail />

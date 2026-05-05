@@ -37,12 +37,12 @@ export function Achievements() {
             {/* Top: text left + note right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div>
-                    <p className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
+                    <p data-aos="fade-right" className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
                         Not a badge collector — a{" "}
                         <span className="text-foreground font-semibold">proof of execution</span>.
                         Every milestone here came from shipping, not studying.
                     </p>
-                    <h2
+                    <h2 data-aos="fade-right"
                         className="text-[clamp(36px,5.5vw,72px)] font-extrabold leading-[0.92]"
                         style={{
                             background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
@@ -55,13 +55,13 @@ export function Achievements() {
                         Achievements<br />& Recognition.
                     </h2>
                 </div>
-<div className="hidden lg:flex items-start justify-end pt-1">
-                        <p className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
-                            Four semesters of Dean&apos;s List. Best capstone presentation.
-                            Open source commits. 300+ hours certified OJT.
-                            No participation trophies — just results.
-                        </p>
-                    </div>
+                <div className="hidden lg:flex items-start justify-end pt-1">
+                    <p data-aos="fade-left" className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
+                        Four semesters of Dean&apos;s List. Best capstone presentation.
+                        Open source commits. 300+ hours certified OJT.
+                        No participation trophies — just results.
+                    </p>
+                </div>
             </div>
 
             {/* Divider */}
@@ -76,12 +76,12 @@ export function Achievements() {
 
             {/* Achievements Grid */}
             <div>
-                <p className="text-center text-[11px] tracking-[.25em] uppercase text-secondary font-bold mb-8">
+                <p data-aos="fade-up" className="text-center text-[11px] tracking-[.25em] uppercase text-secondary font-bold mb-8">
                     Achievements & Recognition
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {ACHIEVEMENTS.map((a) => (
-                        <div
+                        <div data-aos="fade-up"
                             key={a.title}
                             className={`bg-card border ${a.borderColor} rounded-2xl p-6 flex flex-col gap-3 hover:-translate-y-1 transition-all duration-300 cursor-default`}
                         >

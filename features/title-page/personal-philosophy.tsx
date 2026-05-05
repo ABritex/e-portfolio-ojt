@@ -11,10 +11,10 @@ export function PersonalPhilosophy() {
             {/* Top: text left + note right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div>
-                    <p className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
+                    <p data-aos="fade-right" className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
                         Beliefs shaped by code, tested by practice, proven by results.
                     </p>
-                    <h2
+                    <h2 data-aos="fade-right"
                         className="text-[clamp(36px,5.5vw,72px)] font-extrabold leading-[0.92]"
                         style={{
                             background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
@@ -29,7 +29,7 @@ export function PersonalPhilosophy() {
                     </h2>
                 </div>
                 <div className="hidden lg:flex items-start justify-end pt-1">
-                    <p className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
+                    <p data-aos="fade-left" className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
                         Technology is a tool. Utility over elegance.
                         Impact over ego.
                         <br />
@@ -49,7 +49,7 @@ export function PersonalPhilosophy() {
             </div>
 
             {/* Philosophy Content */}
-            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div data-aos="fade-up" className="rounded-2xl border border-border bg-card overflow-hidden">
                 {/* Terminal bar */}
                 <div className="px-6 py-4 border-b border-border flex items-center gap-3">
                     <span className="text-accent text-[11px]">$</span>
@@ -62,9 +62,10 @@ export function PersonalPhilosophy() {
                     </div>
                 </div>
 
-                <div className="p-6 md:p-10 flex flex-col gap-5 text-[14px] text-muted-foreground leading-[1.85] max-w-3xl">
+                <div className="p-6 md:p-10 flex flex-col gap-5 text-[14px] text-muted-foreground leading-[1.85] max-w-3xl relative">
+                    <span className="text-primary text-6xl font-serif absolute -mt-2 -ml-4 select-none">"</span>
                     {TITLE_PAGE_INFO.philosophy.map((para, i) => (
-                        <p key={i}>{para}</p>
+                        <p key={i} dangerouslySetInnerHTML={{ __html: para }} className="relative z-10 pl-6" />
                     ))}
                 </div>
             </div>

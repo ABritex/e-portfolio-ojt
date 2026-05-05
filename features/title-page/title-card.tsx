@@ -12,7 +12,7 @@ export function TitleCard() {
         >
             {/* Top: text left + note right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div>
+                <div data-aos="fade-right">
                     <p className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
                         A formal document fulfilling the requirements of{" "}
                         <span className="text-foreground font-semibold">{OJT_INFO.hours} hours</span> of
@@ -32,7 +32,7 @@ export function TitleCard() {
                         & Front Matter.
                     </h2>
                 </div>
-                <div className="hidden lg:flex items-start justify-end pt-1">
+                <div data-aos="fade-left" className="hidden lg:flex items-start justify-end pt-1">
                     <p className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
                         {PERSON.course} · <span className="text-primary">{PERSON.academicYear}</span>
                         <br />
@@ -55,7 +55,7 @@ export function TitleCard() {
             </div>
 
             {/* Title Card Content */}
-            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div data-aos="fade-up" className="rounded-2xl border border-border bg-card overflow-hidden">
                 {/* Terminal bar */}
                 <div className="px-6 py-4 border-b border-border flex items-center gap-3">
                     <span className="text-accent text-[11px]">$</span>

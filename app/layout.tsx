@@ -7,6 +7,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { FloatingSidebarTrigger } from "@/components/floating-sidebar-trigger";
 import { Providers } from "@/components/providers";
 import Footer from "@/components/footer"
+import { AOSInit } from '@/components/AosInit';
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
@@ -45,6 +46,7 @@ export default function RootLayout({
                         <AppSidebar variant="inset" />
                         <SidebarInset>
                             <FloatingSidebarTrigger />
+                            <AOSInit />
                             {children}
                             <Footer />
                         </SidebarInset>

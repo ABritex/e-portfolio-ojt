@@ -61,7 +61,7 @@ function TocRow({
 }) {
     const c = COLOR[color];
     return (
-        <a
+        <a data-aos="fade-right"
             href={href}
             className={`group flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-3.5 hover:${c.border} hover:bg-muted/30 transition-all duration-150 ${isSub ? "ml-6" : ""}`}
         >
@@ -108,7 +108,7 @@ function TocGroup({
     return (
         <div className="flex flex-col gap-3">
             {/* Group heading */}
-            <div className="flex items-center gap-2.5">
+            <div data-aos="fade-right" className="flex items-center gap-2.5">
                 <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${c.bg}`}>
                     <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" className={c.text}>
                         {icon}
@@ -144,7 +144,7 @@ function AppendicesGrid() {
     return (
         <div className="flex flex-col gap-3">
             {/* Heading */}
-            <div className="flex items-center gap-2.5">
+            <div data-aos="fade-right" className="flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-secondary/10">
                     <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" className="text-secondary">
                         <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
@@ -160,7 +160,7 @@ function AppendicesGrid() {
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+            <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                 {APPENDICES_FULL.map((a) => (
                     <a
                         key={a.id}
@@ -208,11 +208,11 @@ export function TableOfContents() {
         >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div>
-                    <p className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
+                    <p data-aos="fade-right" className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
                         Structured navigation through your complete OJT documentation —{" "}
                         <span className="text-foreground font-semibold">click to explore</span>.
                     </p>
-                    <h2
+                    <h2 data-aos="fade-right"
                         className="text-[clamp(36px,5.5vw,72px)] font-extrabold leading-[0.92]"
                         style={{
                             background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
@@ -226,7 +226,7 @@ export function TableOfContents() {
                         Contents.
                     </h2>
                 </div>
-                <div className="hidden lg:flex items-start justify-end pt-1">
+                <div data-aos="fade-left" className="hidden lg:flex items-start justify-end pt-1">
                     <p className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
                         <span className="text-primary">Front matter</span> ·{" "}
                         <span className="text-accent">Chapters I–IV</span> ·{" "}
@@ -253,7 +253,7 @@ export function TableOfContents() {
             </div>
 
             {/* ── Main card ── */}
-            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div data-aos="fade-up" className="rounded-2xl border border-border bg-card overflow-hidden">
                 {/* Terminal header */}
                 <div className="px-6 py-4 border-b border-border flex items-center gap-3">
                     <span className="text-accent text-[11px]">$</span>

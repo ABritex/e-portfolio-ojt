@@ -11,10 +11,10 @@ export function StudentPrayer() {
             {/* Top: text left + note right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div>
-                    <p className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
+                    <p data-aos="fade-right" className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
                         A prayer for guidance, strength, and wisdom throughout the training journey.
                     </p>
-                    <h2
+                    <h2 data-aos="fade-right"
                         className="text-[clamp(36px,5.5vw,72px)] font-extrabold leading-[0.92]"
                         style={{
                             background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
@@ -29,7 +29,7 @@ export function StudentPrayer() {
                     </h2>
                 </div>
                 <div className="hidden lg:flex items-start justify-end pt-1">
-                    <p className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
+                    <p data-aos="fade-left" className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
                         Faith as foundation. Hope as compass. Gratitude as strength.
                         <br />
                         <span className="text-muted-foreground/40">$ cat ./prayer.md</span>
@@ -49,7 +49,7 @@ export function StudentPrayer() {
             </div>
 
             {/* Prayer Content */}
-            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div data-aos="fade-up" className="rounded-2xl border border-border bg-card overflow-hidden">
                 {/* Terminal bar */}
                 <div className="px-6 py-4 border-b border-border flex items-center gap-3">
                     <span className="text-accent text-[11px]">$</span>
