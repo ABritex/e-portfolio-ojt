@@ -1,5 +1,6 @@
 import { TOOLS } from "@/data/portfolio";
 import { SectionHeader, Divider } from "@/components/terminal";
+import Image from "next/image";
 
 export function ToolsGrid() {
     return (
@@ -34,9 +35,20 @@ export function ToolsGrid() {
                             key={tool.name}
                             className="bg-card border border-border rounded-2xl px-4 py-3.5 flex items-center justify-between hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200 cursor-default group"
                         >
-                            <div>
-                                <p className="text-[13px] text-foreground font-semibold">{tool.name}</p>
-                                <p className="text-[10px] text-muted-foreground/50 tracking-widest mt-0.5">{tool.tag}</p>
+                            <div className="flex items-center gap-3">
+                                {tool.icon && (
+                                    <Image
+                                        src={tool.icon}
+                                        alt={tool.name}
+                                        width={20}
+                                        height={20}
+                                        className="flex-shrink-0 object-contain"
+                                    />
+                                )}
+                                <div>
+                                    <p className="text-[13px] text-foreground font-semibold">{tool.name}</p>
+                                    <p className="text-[10px] text-muted-foreground/50 tracking-widest mt-0.5">{tool.tag}</p>
+                                </div>
                             </div>
                             <span className={`text-[10px] font-bold tracking-widest ${tool.color} opacity-0 group-hover:opacity-100 transition-opacity`}>
                                 ▸

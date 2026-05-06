@@ -130,7 +130,7 @@ export function TableOfContents() {
                     <>
                         <span className="text-primary">Front matter</span> ·{" "}
                         <span className="text-accent">Chapters I–IV</span> ·{" "}
-                        <span className="text-secondary">Appendices A–Q</span>
+                        <span className="text-secondary">Appendices A–R</span>
                         <br />
                         <span className="text-muted-foreground/40">$ cat toc.md | less</span>
                     </>

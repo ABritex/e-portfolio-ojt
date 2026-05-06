@@ -43,14 +43,26 @@ function isActiveUrl(currentPath: string, itemUrl: string): boolean {
 
 export function NavMain({ groups }: { groups: NavGroup[] }) {
     const pathname = usePathname()
-    const [openMap, setOpenMap] = React.useState<Record<string, boolean>>(() => {
-        try {
-            const saved = localStorage.getItem("sidebar-open-map")
-            return saved ? JSON.parse(saved) : {}
-        } catch {
-            return {}
+    const [openMap, setOpenMap] = React.useState<Record<string, boolean>>({})
+    const isMounted = React.useRef(false)
+    const initializedRef = React.useRef(false)
+
+    React.useEffect(() => {
+        isMounted.current = true
+        if (!initializedRef.current) {
+            initializedRef.current = true
+            const saved = sessionStorage.getItem("nav-open-map")
+            if (saved) {
+                setTimeout(() => setOpenMap(JSON.parse(saved)), 0)
+            }
         }
-    })
+    }, [])
+
+    React.useEffect(() => {
+        if (isMounted.current) {
+            sessionStorage.setItem("nav-open-map", JSON.stringify(openMap))
+        }
+    }, [openMap])
 
     const computedOpenMap = React.useMemo(() => {
         const result = { ...openMap }
@@ -67,12 +79,10 @@ export function NavMain({ groups }: { groups: NavGroup[] }) {
         return result
     }, [openMap, pathname, groups])
 
-    React.useEffect(() => {
-        localStorage.setItem("sidebar-open-map", JSON.stringify(computedOpenMap))
-    }, [computedOpenMap])
-
     const toggle = (key: string) => {
-        setOpenMap(prev => ({ ...prev, [key]: !prev[key] }))
+        setOpenMap(prev => {
+            return { ...prev, [key]: !prev[key] }
+        })
     }
 
     return (
@@ -90,31 +100,44 @@ export function NavMain({ groups }: { groups: NavGroup[] }) {
 
                                 return (
                                     <SidebarMenuItem key={item.title}>
-                                        <SidebarMenuButton
-                                            tooltip={item.title}
-                                            onClick={() => {
-                                                if (hasChildren) toggle(key)
-                                            }}
-                                            asChild={!hasChildren}
-                                            isActive={isActive}
-                                        >
-                                            {hasChildren ? (
-                                                <>
-                                                    {item.icon && <item.icon />}
-                                                    <span>{item.title}</span>
+                                        {hasChildren ? (
+                                            <div className="flex items-center w-full">
+                                                <SidebarMenuButton
+                                                    tooltip={item.title}
+                                                    asChild
+                                                    isActive={isActive}
+                                                >
+                                                    <a href={item.url} className="flex-1">
+                                                        {item.icon && <item.icon />}
+                                                        <span>{item.title}</span>
+                                                    </a>
+                                                </SidebarMenuButton>
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        toggle(key)
+                                                    }}
+                                                    className="p-2 rounded-md"
+                                                >
                                                     {isOpen ? (
-                                                        <ChevronDownIcon className="ml-auto h-4 w-4" />
+                                                        <ChevronDownIcon className="h-4 w-4" />
                                                     ) : (
-                                                        <ChevronRightIcon className="ml-auto h-4 w-4" />
+                                                        <ChevronRightIcon className="h-4 w-4" />
                                                     )}
-                                                </>
-                                            ) : (
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <SidebarMenuButton
+                                                tooltip={item.title}
+                                                asChild
+                                                isActive={isActive}
+                                            >
                                                 <a href={item.url}>
                                                     {item.icon && <item.icon />}
                                                     <span>{item.title}</span>
                                                 </a>
-                                            )}
-                                        </SidebarMenuButton>
+                                            </SidebarMenuButton>
+                                        )}
 
                                         {hasChildren && isOpen && (
                                             <SidebarMenuSub>

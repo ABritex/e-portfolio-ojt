@@ -1,6 +1,6 @@
 "use client";
 
-import { CompanyProfile, CompanyOverview, CompanyNature, CompanyMission, CompanyHistory, CompanyOrgChart } from "@/features/company-profile";
+import { CompanyProfile, CompanyNature, CompanyMission, CompanyHistory, CompanyOrgChart } from "@/features/company-profile";
 import Header from "@/components/header";
 import FooterBtn from "@/components/footer-btn";
 
@@ -10,10 +10,6 @@ export default function CompanyProfilePage() {
             <Header />
             <div className="flex flex-col items-center justify-center px-8 py-10">
                 <CompanyProfile />
-            </div>
-
-            <div className="flex flex-col items-center justify-center px-8 py-10">
-                <CompanyOverview />
             </div>
             <div className="flex flex-col items-center justify-center px-8 py-10">
                 <CompanyNature />

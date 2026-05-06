@@ -5,11 +5,7 @@ import { overall, ratingLabel } from "@/data/portfolio";
 
 export function Assessment() {
     return (
-        <section
-            id="assessment"
-            className="w-full flex flex-col gap-0"
-            style={{ fontFamily: "var(--font-mono)" }}
-        >
+        <section id="assessment" className="w-full flex flex-col gap-0">
             <HeroBanner
                 chapter="Chapter IV"
                 title={<>Assessment &<br />Evaluation</>}

@@ -98,11 +98,12 @@ const APPENDICES_FULL = [
     { id: "appJ", label: "Appendix J", desc: "Daily Time Record (Time Card)" },
     { id: "appK", label: "Appendix K", desc: "Certificate of Completion" },
     { id: "appL", label: "Appendix L", desc: "Certificate of Clearance" },
-    { id: "appM", label: "Appendix M", desc: "Pictures during Pre-service Seminar" },
-    { id: "appN", label: "Appendix N", desc: "Pictures during Office Works" },
-    { id: "appO", label: "Appendix O", desc: "Code of Ethics for CAST Student Internship" },
-    { id: "appP", label: "Appendix P", desc: "Curriculum Vitae" },
-    { id: "appQ", label: "Appendix Q", desc: "On-the-Job Training Portfolio Evaluation Form" },
+    { id: "appM", label: "Appendix M", desc: "Performance/Proficiency Rating Sheet (Placement Agency/Office)" },
+    { id: "appN", label: "Appendix N", desc: "Pictures during Pre-service Seminar" },
+    { id: "appO", label: "Appendix O", desc: "Pictures during Office Works" },
+    { id: "appP", label: "Appendix P", desc: "Code of Ethics for CAST Student Internship" },
+    { id: "appQ", label: "Appendix Q", desc: "Curriculum Vitae" },
+    { id: "appR", label: "Appendix R", desc: "On-the-Job Training Portfolio Evaluation Form" },
 ];
 
 

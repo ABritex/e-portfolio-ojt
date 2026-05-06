@@ -3,28 +3,12 @@ import { useState } from "react";
 import { TECH_CATEGORIES } from "@/data/portfolio";
 import { SkillBar } from "./skill-bar";
 import { SectionHeader, Divider, TerminalWindow } from "@/components/terminal";
+import Image from "next/image";
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
-    frontend: (
-        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-            <polyline points="16 18 22 12 16 6" />
-            <polyline points="8 6 2 12 8 18" />
-        </svg>
-    ),
-    backend: (
-        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-            <rect x="2" y="3" width="20" height="14" rx="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-        </svg>
-    ),
-    devops: (
-        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-        </svg>
-    ),
+    frontend: <Image src="/icons/code.svg" alt="Frontend" width={14} height={14} />,
+    backend: <Image src="/icons/server.svg" alt="Backend" width={14} height={14} />,
+    devops: <Image src="/icons/container.svg" alt="DevOps" width={14} height={14} />,
 };
 
 export function TechStack() {
@@ -32,11 +16,7 @@ export function TechStack() {
     const active = TECH_CATEGORIES.find((c) => c.id === activeId)!;
 
     return (
-        <section
-            id="tech-stack"
-            className="w-full flex flex-col gap-8"
-            style={{ fontFamily: "var(--font-mono)" }}
-        >
+        <section id="tech-stack" className="w-full flex flex-col gap-8">
             <SectionHeader
                 subtitle={
                     <>
@@ -84,6 +64,8 @@ export function TechStack() {
                                 level={tech.level}
                                 note={tech.note}
                                 colorClass={active.color}
+                                activeId={activeId}
+                                icon={tech.icon}
                             />
                         ))}
                     </div>

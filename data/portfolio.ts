@@ -12,8 +12,7 @@ export { TOC_STRUCTURE, APPENDICES_FULL } from "./toc";
 // Narrative content
 export { FRONT_MATTER, CHAPTERS, PHOTOS } from "./narrative";
 
-// Showcase data
-export { TECH_CATEGORIES, TOOLS, ACHIEVEMENTS } from "./showcase";
+export { TECH_CATEGORIES, TOOLS } from "./showcase";
 
 // Introduction content
 export { INTRODUCTION } from "./introduction";
