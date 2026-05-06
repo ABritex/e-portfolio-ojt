@@ -33,64 +33,46 @@ type NavGroup = {
 }
 
 function isActiveUrl(currentPath: string, itemUrl: string): boolean {
-    const pathWithoutHash = currentPath.split("#")[0]
-    const urlWithoutHash = itemUrl.split("#")[0]
-    return pathWithoutHash === urlWithoutHash || pathWithoutHash.startsWith(urlWithoutHash + "/")
+    const [pathWithoutHash, pathHash] = currentPath.split("#")
+    const [urlWithoutHash, urlHash] = itemUrl.split("#")
+    const pathMatches = pathWithoutHash === urlWithoutHash || pathWithoutHash.startsWith(urlWithoutHash + "/")
+    if (!pathMatches) return false
+    if (urlHash) return pathHash === urlHash
+    return true
 }
 
 export function NavMain({ groups }: { groups: NavGroup[] }) {
     const pathname = usePathname()
-    const [openMap, setOpenMap] = React.useState<Record<string, boolean>>({})
-    const initializedRef = React.useRef(false)
-
-    React.useEffect(() => {
-        if (!initializedRef.current) {
+    const [openMap, setOpenMap] = React.useState<Record<string, boolean>>(() => {
+        try {
             const saved = localStorage.getItem("sidebar-open-map")
-            if (saved) {
-                try {
-                    setOpenMap(JSON.parse(saved))
-                } catch {}
-            }
-            initializedRef.current = true
+            return saved ? JSON.parse(saved) : {}
+        } catch {
+            return {}
         }
-    }, [])
+    })
 
-    React.useEffect(() => {
-        if (!initializedRef.current) return
-
-        let hasChanges = false
-        const newState: Record<string, boolean> = {}
-
+    const computedOpenMap = React.useMemo(() => {
+        const result = { ...openMap }
         groups.forEach((group, gi) => {
             group.items.forEach((item, ii) => {
-                if (item.items) {
-                    const key = `${gi}-${ii}`
-                    if (openMap[key] === undefined) {
-                        const hasActiveChild = item.items.some(sub => isActiveUrl(pathname, sub.url))
-                        if (hasActiveChild) {
-                            newState[key] = true
-                            hasChanges = true
-                        }
+                if (item.items && result[`${gi}-${ii}`] === undefined) {
+                    const hasActiveChild = item.items.some(sub => isActiveUrl(pathname, sub.url))
+                    if (hasActiveChild) {
+                        result[`${gi}-${ii}`] = true
                     }
                 }
             })
         })
+        return result
+    }, [openMap, pathname, groups])
 
-        if (hasChanges) {
-            setOpenMap(prev => {
-                const next = { ...prev, ...newState }
-                localStorage.setItem("sidebar-open-map", JSON.stringify(next))
-                return next
-            })
-        }
-    }, [pathname, openMap])
+    React.useEffect(() => {
+        localStorage.setItem("sidebar-open-map", JSON.stringify(computedOpenMap))
+    }, [computedOpenMap])
 
     const toggle = (key: string) => {
-        setOpenMap(prev => {
-            const next = { ...prev, [key]: !prev[key] }
-            localStorage.setItem("sidebar-open-map", JSON.stringify(next))
-            return next
-        })
+        setOpenMap(prev => ({ ...prev, [key]: !prev[key] }))
     }
 
     return (
@@ -104,7 +86,7 @@ export function NavMain({ groups }: { groups: NavGroup[] }) {
                                 const key = `${gi}-${ii}`
                                 const hasChildren = !!item.items?.length
                                 const isActive = isActiveUrl(pathname, item.url)
-                                const isOpen = !!openMap[key]
+                                const isOpen = !!computedOpenMap[key]
 
                                 return (
                                     <SidebarMenuItem key={item.title}>

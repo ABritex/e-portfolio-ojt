@@ -1,6 +1,6 @@
 "use client";
 
-import { TitleCard, TableOfContents, Acknowledgement, StudentPrayer, PersonalPhilosophy, CareerPlan } from "@/features/title-page";
+import { TitleCard, TableOfContents, Acknowledgement, StudentPrayer, PersonalPhilosophy, CareerPlan, EPortfolioContents } from "@/features/title-page";
 import Header from "@/components/header";
 
 export default function TitlePageRoute() {
@@ -24,6 +24,9 @@ export default function TitlePageRoute() {
             </div>
             <div className="flex flex-col items-center justify-center px-8 py-10">
                 <CareerPlan />
+            </div>
+            <div className="flex flex-col items-center justify-center px-8 py-10">
+                <EPortfolioContents />
             </div>
         </div>
     );

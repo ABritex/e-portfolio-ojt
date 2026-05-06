@@ -1,4 +1,6 @@
-export { Introduction } from "./introduction";
-export { Importance } from "./importance";
-export { Objectives } from "./objectives";
-export { TimeAndPlace } from "./time-place";
+import { Introduction } from "./introduction";
+import { Importance } from "./importance";
+import { Objectives } from "./objectives";
+import { TimeAndPlace } from "./time-place";
+
+export { Introduction, Importance, Objectives, TimeAndPlace }

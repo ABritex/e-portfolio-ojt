@@ -1,29 +1,11 @@
 "use client"
 
 import * as React from "react"
-import {
-    BookOpen,
-    LayoutDashboard,
-    Images,
-    Paperclip,
-    Link,
-    Mail,
-    Captions,
-    Building2,
-    Briefcase,
-    ClipboardCheck,
-} from "lucide-react"
-
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { ThemeToggle } from "@/components/theme-toggle"
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarRail,
-} from "@/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, } from "@/components/ui/sidebar"
+import { BookOpen, LayoutDashboard, Images, Paperclip, Link, Mail, Captions, Building2, Briefcase, ClipboardCheck, } from "lucide-react"
 
 const data = {
     navGroups: [
@@ -65,10 +47,10 @@ const data = {
                     url: "/company-profile",
                     icon: Building2,
                     items: [
-                        { title: "1. Nature of Agency", url: "/company-profile" },
-                        { title: "2. Mission / Vision / Goal", url: "/company-profile" },
-                        { title: "3. History / Background", url: "/company-profile" },
-                        { title: "4. Organizational Structure", url: "/company-profile" },
+                        { title: "1. Nature of Agency", url: "/company-profile#cp-nature" },
+                        { title: "2. Mission / Vision / Goal", url: "/company-profile#cp-mission" },
+                        { title: "3. History / Background", url: "/company-profile#cp-history" },
+                        { title: "4. Organizational Structure", url: "/company-profile#cp-org" },
                     ],
                 },
                 {
@@ -76,10 +58,10 @@ const data = {
                     url: "/work-experience",
                     icon: Briefcase,
                     items: [
-                        { title: "1. Weekly Reports", url: "/work-experience" },
-                        { title: "2. Daily Time Record", url: "/work-experience" },
-                        { title: "3. Progress Report", url: "/work-experience" },
-                        { title: "4. Analysis Report", url: "/work-experience" },
+                        { title: "1. Weekly Reports", url: "/work-experience#we-weekly" },
+                        { title: "2. Daily Time Record", url: "/work-experience#we-dtr" },
+                        { title: "3. Progress Report", url: "/work-experience#we-progress" },
+                        { title: "4. Analysis Report", url: "/work-experience#we-analysis" },
                     ],
                 },
                 {

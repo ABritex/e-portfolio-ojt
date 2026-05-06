@@ -1,4 +1,5 @@
 import { ACHIEVEMENTS } from "@/data/portfolio";
+import { SectionHeader, Divider } from "@/components/terminal";
 
 const ACHIEVEMENT_ICONS: Record<string, React.ReactNode> = {
     "Dean's Lister": (
@@ -34,47 +35,24 @@ export function Achievements() {
             className="w-full flex flex-col gap-12"
             style={{ fontFamily: "var(--font-mono)" }}
         >
-            {/* Top: text left + note right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div>
-                    <p data-aos="fade-right" className="text-[clamp(13px,1.6vw,16px)] text-muted-foreground leading-relaxed mb-5">
+            <SectionHeader
+                subtitle={
+                    <>
                         Not a badge collector — a{" "}
                         <span className="text-foreground font-semibold">proof of execution</span>.
                         Every milestone here came from shipping, not studying.
-                    </p>
-                    <h2 data-aos="fade-right"
-                        className="text-[clamp(36px,5.5vw,72px)] font-extrabold leading-[0.92]"
-                        style={{
-                            background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
-                            letterSpacing: "-0.02em",
-                        }}
-                    >
-                        Achievements<br />& Recognition.
-                    </h2>
-                </div>
-                <div className="hidden lg:flex items-start justify-end pt-1">
-                    <p data-aos="fade-left" className="text-[13px] text-muted-foreground leading-relaxed max-w-sm text-right">
-                        Four semesters of Dean&apos;s List. Best capstone presentation.
-                        Open source commits. 300+ hours certified OJT.
-                        No participation trophies — just results.
-                    </p>
-                </div>
-            </div>
+                    </>
+                }
+                title={<>Achievements<br />& Recognition.</>}
+                note="Four semesters of Dean's List. Best capstone presentation. Open source commits. 300+ hours certified OJT. No participation trophies — just results."
+            />
 
-            {/* Divider */}
-            <div className="relative flex items-center w-full">
-                <div className="flex-1 border-t border-border" />
-                <div className="ml-4 w-12 h-12 rounded-full border border-border bg-card flex items-center justify-center shrink-0">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" className="text-secondary">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                </div>
-            </div>
+            <Divider iconClassName="text-secondary">
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+            </Divider>
 
-            {/* Achievements Grid */}
             <div>
                 <p data-aos="fade-up" className="text-center text-[11px] tracking-[.25em] uppercase text-secondary font-bold mb-8">
                     Achievements & Recognition

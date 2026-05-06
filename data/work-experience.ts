@@ -1,0 +1,186 @@
+
+const WEEKLY_REPORTS = [
+    {
+        week: "Week 1",
+        period: "January 30, 2026",
+        month: "January",
+        activities: [
+            "Reviewing and understanding procedures involved in Small Value Procurement (SVP)",
+            "Observing and learning the overall workflow for processing SVP-related documents",
+            "Organizing and categorizing SVP files for proper documentation and easy retrieval",
+        ],
+        skills: ["SVP Process", "Document Filing", "Record Management"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 2",
+        period: "February 2–6, 2026",
+        month: "February",
+        activities: [
+            "Organizing Notice of Award (NOA) documents according to date for systematic filing",
+            "Arranging SVP-related documents including NTP, RFQ, NOA, and PhilGEPS records for proper documentation",
+        ],
+        skills: ["NOA Filing", "SVP Documents", "PhilGEPS"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 3",
+        period: "February 9–13, 2026",
+        month: "February",
+        activities: [
+            "Categorizing BAC bidding-related documents by year for organized record management",
+            "Arranging Request for Quotation (RFQ) documents in a systematic manner",
+            "Scanning RFQ documents to create digital copies for documentation and backup purposes",
+        ],
+        skills: ["RFQ Management", "Document Scanning", "Records Categorization"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 4",
+        period: "February 16–20, 2026",
+        month: "February",
+        activities: [
+            "Arranging and scanning RFQ documents to ensure organized records and digital backups",
+            "Reviewing and recording SVP documents to ensure accuracy, completeness, and proper documentation",
+            "Categorizing BAC bidding-related documents by year for organized record management",
+        ],
+        skills: ["RFQ Scanning", "SVP Documentation", "Quality Review"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 5",
+        period: "February 23–27, 2026",
+        month: "February",
+        activities: [
+            "Logging of Posted Awards Documents SVP",
+            "Categorizing BAC bidding-related documents by year for organized record management",
+            "Moving SVP and Public Bidding Papers to Storage Room",
+        ],
+        skills: ["Awards Logging", "Document Archiving", "Storage Management"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 6",
+        period: "March 2–6, 2026",
+        month: "March",
+        activities: [
+            "Arranging and scanning RFQ documents to ensure organized records and digital copies",
+            "Facilitating the signing of key BAC-related documents by TWG members",
+            "Recording and maintaining logs of Post-Award documents for monitoring and documentation",
+        ],
+        skills: ["TWG Coordination", "Post-Award Logging", "RFQ Scanning"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 7",
+        period: "March 9–12, 2026",
+        month: "March",
+        activities: [
+            "Recording and maintaining logs of Post-Award documents for monitoring and documentation",
+            "Organizing and managing BAC documents to ensure efficient review and approval processes",
+            "Gaining insight into the overall bidding process and its procedures",
+        ],
+        skills: ["Post-Award Records", "BAC Document Management", "Bidding Process"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 8",
+        period: "March 16–19, 2026",
+        month: "March",
+        activities: [
+            "Scanning SVP documents to create digital copies for documentation and backup purposes",
+            "Facilitating the signing of key BAC-related documents by TWG members",
+            "Coordinating the signing and documentation of bid attendance with TWG members",
+        ],
+        skills: ["SVP Scanning", "TWG Facilitation", "Bid Attendance"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 9",
+        period: "March 23–26, 2026",
+        month: "March",
+        activities: [
+            "Facilitating the signing of key BAC-related documents by TWG members",
+            "Maintaining and updating records of post-award documents for tracking and documentation",
+            "Coordinating the signing and documentation of bid attendance with TWG members",
+        ],
+        skills: ["Document Signing", "Post-Award Tracking", "TWG Coordination"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 10",
+        period: "March 30 – April 1, 2026",
+        month: "March",
+        activities: [
+            "Arranging SVP-related documents including NTP, RFQ, NOA, and PhilGEPS records for proper documentation and easy access",
+            "Assisting in the coordination and documentation of bid attendance for TWG members",
+            "Organizing and managing BAC documents to ensure efficient review and approval processes",
+            "Coordinating the signing and documentation of bid attendance with TWG members",
+            "Recording and maintaining logs of Post-Award documents for monitoring and documentation",
+        ],
+        skills: ["SVP Arrangement", "PhilGEPS Records", "Bid Documentation", "BAC Management", "Post-Award Logging"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 11",
+        period: "April 6–8, 2026",
+        month: "April",
+        activities: [
+            "Coordinating the signing and documentation of bid attendance with TWG members",
+            "Scanning SVP documents to create digital copies for documentation and backup purposes",
+        ],
+        skills: ["Bid Attendance", "SVP Scanning", "Digital Documentation"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 12",
+        period: "April 13–16, 2026",
+        month: "April",
+        activities: [
+            "Organizing and managing BAC documents to ensure efficient review and approval processes",
+            "Scanning SVP and public bidding documents for posting, organizing and duplicating files for proper record-keeping",
+        ],
+        skills: ["BAC Organization", "Public Bidding Docs", "File Duplication"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 13",
+        period: "April 20–23, 2026",
+        month: "April",
+        activities: [
+            "Scanning SVP and public bidding documents for posting, organizing and duplicating files for proper record-keeping",
+            "Organizing and managing BAC documents to ensure efficient review and approval processes",
+        ],
+        skills: ["Document Posting", "SVP & Bidding Docs", "Records Management"],
+        photos: [] as string[],
+    },
+    {
+        week: "Week 14",
+        period: "April 27–30, 2026",
+        month: "April",
+        activities: [
+            "Organizing BAC bidding-related documents for proper record management",
+            "Organizing and managing BAC documents to ensure efficient review and approval processes",
+        ],
+        skills: ["BAC Filing", "Document Management", "Record Keeping"],
+        photos: [] as string[],
+    },
+];
+
+
+const OBJECTIVES = [
+    { id: "01", text: "Reviewing and understanding the procedures involved in small value procurement (SVP)" },
+    { id: "02", text: "Observing and learning the overall workflow for processing SVP-related documents" },
+    { id: "03", text: "Organizing and categorizing SVP files for proper documentation and easy retrieval" },
+    { id: "04", text: "Organizing Notice of Award (NOA) documents according to date for systematic filing" },
+    { id: "05", text: "Arranging SVP-related documents, including NTP, RFQ, NOA, and PhilGEPS records, for proper documentation and easy access" },
+    { id: "06", text: "Categorizing BAC bidding-related documents by year for organized record management" },
+    { id: "07", text: "Arranging Request for Quotation (RFQ) documents in a systematic manner" },
+    { id: "08", text: "Scanning RFQ documents to create digital copies for documentation and backup purposes" },
+    { id: "09", text: "Reviewing and recording SVP documents to ensure accuracy, completeness, and proper documentation" },
+    { id: "10", text: "Organizing and managing BAC documents to ensure efficient review and approval processes" },
+    { id: "11", text: "Coordinating the signing and documentation of bid attendance with TWG members" },
+    { id: "13", text: "Recording and maintaining logs of Post-Award documents for monitoring and documentation purposes" },
+    { id: "14", text: "Scanning SVP documents to create digital copies for documentation and backup purposes" },
+];
+export { WEEKLY_REPORTS, OBJECTIVES };

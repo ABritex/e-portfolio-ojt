@@ -1,10 +1,6 @@
-import { PERSON, OJT_INFO } from "./personal";
-
 const TITLE_PAGE_INFO = {
-    university: "Your University Name Here",
-    college: "College of Arts, Science, and Technology",
+    college: "Occidental Mindoro State College",
     department: "Department of Information Technology",
-    supervisor: "Your OJT Supervisor Name",
     philosophy: [
         `<span class="text-primary font-semibold">"A Life Guided by Curiosity and Steady Growth"</span>`,
         "Since I was young, I have always been curious about how things work and why they happen, and this curiosity has shaped the way I approach life by encouraging me to keep learning, to reflect on my experiences, and to understand that growth takes time, patience, and consistent effort rather than quick results or sudden change, allowing me to appreciate the value of small steps and steady progress in everything I do.",
@@ -13,30 +9,60 @@ const TITLE_PAGE_INFO = {
 };
 
 const ACKNOWLEDGEMENT_INFO = {
-    opening:
-        "I would like to express my heartfelt thanks to everyone who supported me throughout my On-the-Job Training journey.",
-    coordinator: "Your OJT Coordinator Name Here",
-    supervisors: [
-        "Supervisor One",
-        "Supervisor Two",
-        "Supervisor Three",
-    ],
-    interns: [
-        "Intern One",
-        "Intern Two",
-        "Intern Three",
-    ],
-    closing: "I will carry the lessons and memories from this journey into my future career.",
+    quote: `"The only way to do great work is to love what you do."\n— Steve Jobs`,
+    opening: `First of all, I want to express my overwhelming thanks to all the people who helped me complete my On-The-Job Training. Thank you!`,
+    coordinator: "Dr. Ailen B. Garcia",
+    coordinatorNote:
+        "my OJT instructor, for her perseverance in assisting, teaching, and monitoring us before, during, and after our OJT hours. Thank you so much for your advice, which will help me reach my goals as I continue on my life's path.",
+    permission: {
+        name: "Mrs. Mary Rose S. Cortez",
+        role: "BAC Secretariat of Bids and Awards Committee (BAC) LGU-SJ",
+        note: "who granted permission for the On-the-Job Training to take place at their office.",
+    },
+    staff: {
+        name: "All BAC Staff and Employee",
+        note: "Thank you for teaching me and sharing your knowledge. Additionally, I aim to mentor and pass down life skills that will undoubtedly be valuable in my future endeavors.",
+    }, staffNote:
+        "To All BAC Staff and Employee. Thank you for teaching me and sharing your knowledge. Additionally, I aim to mentor and pass down life skills that will undoubtedly be valuable in my future endeavors.",
+    interns: ["Mr. Curt David Gamil", "Ms. Miedhel Joyce Clemente"],
+    family: "my parents, Anastacio and Norma Abeleda",
+    familyNote:
+        "Thank you for your encouragement from the start of this journey, for keeping me motivated, for your unconditional love, and for your financial, emotional, and spiritual support.",
+    closing: `Lastly, to our almighty God, for giving me wisdom, knowledge, and strength every day, for all the graces and blessings, for the guidance and good health that helps me perform my tasks to complete my ON-THE-JOB TRAINING, and for his word that reminds me that "I can do all things through Christ, who strengthens me." (Philippians 4:13).`,
 };
 
 const STUDENT_PRAYER = {
+    title: "A Prayer for Guidance and Strength",
     paragraphs: [
-        "Dear Heavenly Father,",
-        "Thank You for walking with me during this internship experience. Your guidance strengthened me to overcome every obstacle and imparted in me wisdom to learn and understand. I thank You for the lessons, for the experience, and for the skills that I have acquired during the process. I seek Your forgiveness for where I came short, and thank You for never leaving my side.",
-        "Please continue to bless me and my fellow interns as we proceed in life. Guide us into good work, keep us grounded in our values, and apply what we have learned to develop into the individuals You have intended us to be. May we always hold the lessons of this season close and use them to serve others well.",
-        "Bless also our mentors, supervisors, and the institution that gave us this opportunity. May their dedication to teaching the next generation be rewarded many times over.",
+        [
+            "Heavenly Father, You see my soul,",
+            "The hidden fears, the unseen goal.",
+            "In quiet moments and restless days,",
+            "You are my guide in all my ways.",
+        ],
+        [
+            "Lord Jesus, stay here by my side,",
+            "Through every storm, be my guide.",
+            "When I feel lost or unsure what's right,",
+            "Lead me forward with Your light.",
+        ],
+        [
+            "Holy Spirit, breathe in me,",
+            "Give me strength to simply be—",
+            "Patient, kind, and brave enough",
+            "To trust You even when it's tough.",
+        ],
+        [
+            "Help me grow in all I do,",
+            "To walk in truth and follow You.",
+            "With grateful heart, I humbly pray,",
+            "Be with me, Lord, each step, each day.",
+        ],
+        [
+            "Amen",
+        ],
     ],
-    closing: "In Your name, Amen.",
+    footer: "In faith I move forward, in grace I find peace, and in God I place my trust.",
 };
 
 const CAREER_PLAN = [

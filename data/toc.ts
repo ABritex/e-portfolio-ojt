@@ -3,12 +3,12 @@ const TOC_STRUCTURE = [
         group: "Front Matter",
         color: "primary" as const,
         items: [
-            { id: "title-page", label: "Title Page", href: "/ojt/title", subs: [] },
-            { id: "toc", label: "Table of Contents", href: "/ojt/toc", subs: [] },
-            { id: "acknowledgement", label: "Acknowledgment", href: "/ojt/acknowledgement", subs: [] },
-            { id: "prayer", label: "Student Trainee Prayer", href: "/ojt/prayer", subs: [] },
-            { id: "philosophy", label: "Personal Philosophy", href: "/ojt/philosophy", subs: [] },
-            { id: "career", label: "Career Plan", href: "/ojt/career", subs: [] },
+            { id: "title-page", label: "Title Page", href: "#title-card", subs: [] },
+            { id: "toc", label: "Table of Contents", href: "#table-of-contents", subs: [] },
+            { id: "acknowledgement", label: "Acknowledgment", href: "#acknowledgement", subs: [] },
+            { id: "prayer", label: "Student Trainee Prayer", href: "#student-prayer", subs: [] },
+            { id: "philosophy", label: "Personal Philosophy", href: "#personal-philosophy", subs: [] },
+            { id: "career", label: "Career Plan", href: "#career-plan", subs: [] },
         ],
     },
     {
@@ -105,4 +105,8 @@ const APPENDICES_FULL = [
     { id: "appQ", label: "Appendix Q", desc: "On-the-Job Training Portfolio Evaluation Form" },
 ];
 
+
 export { TOC_STRUCTURE, APPENDICES_FULL };
+
+// In @/data/portfolio.ts
+

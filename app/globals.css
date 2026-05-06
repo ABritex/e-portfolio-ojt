@@ -120,6 +120,7 @@
             transform: translateY(6px)
         }
     }
+
 }
 
 :root {
@@ -202,6 +203,7 @@
 
     html {
         @apply font-mono;
+        scroll-behavior: smooth;
     }
 
 }
@@ -232,4 +234,10 @@
 
 [data-animate][data-delay="400"] {
     transition-delay: 400ms;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }

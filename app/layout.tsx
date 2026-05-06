@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "OJT PORTFOLIO",
+    title: "Nicholas Abeleda | OJT PORTFOLIO",
     description: "Portfolio of Nicholas Abeleda",
 };
 
