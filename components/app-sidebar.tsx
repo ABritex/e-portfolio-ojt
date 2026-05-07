@@ -5,7 +5,7 @@ import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, } from "@/components/ui/sidebar"
-import { BookOpen, LayoutDashboard, Images, Paperclip, Link, Mail, Captions, Building2, Briefcase, ClipboardCheck, } from "lucide-react"
+import { BookOpen, LayoutDashboard, Images, Paperclip, Link, Mail, Captions, Building2, Briefcase, ClipboardCheck, Info } from "lucide-react"
 
 const data = {
     navGroups: [
@@ -21,6 +21,11 @@ const data = {
                     title: "Showcase",
                     url: "/showcase",
                     icon: Images,
+                },
+                {
+                    title: "About Me",
+                    url: "/about",
+                    icon: Info,
                 },
             ],
         },

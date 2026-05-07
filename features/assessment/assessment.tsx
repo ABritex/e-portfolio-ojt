@@ -10,8 +10,8 @@ export function Assessment() {
                 chapter="Chapter IV"
                 title={<>Assessment &<br />Evaluation</>}
                 subtitle="Reflecting on the practicum program"
-                primaryColor="primary"
-                secondaryColor="accent"
+                primaryColor="accent"
+                secondaryColor="secondary"
                 quickFacts={[
                     {
                         label: "Overall Rating",

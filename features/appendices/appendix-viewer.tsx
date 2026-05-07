@@ -1,14 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const appendixImages: Record<string, string[]> = {
@@ -63,67 +56,89 @@ export function AppendixViewer({
 }: AppendixViewerProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = appendixImages[appendixId] || [];
-
     const hasMultiple = images.length > 1;
 
-    const handlePrev = () => {
-        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [appendixId]);
 
-    const handleNext = () => {
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-    };
+    useEffect(() => {
+        if (!open) return;
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onOpenChange(false);
+            if (e.key === "ArrowLeft") setCurrentIndex((p) => (p - 1 + images.length) % images.length);
+            if (e.key === "ArrowRight") setCurrentIndex((p) => (p + 1) % images.length);
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [open, images.length, onOpenChange]);
 
-    const handleOpenChange = (newOpen: boolean) => {
-        if (!newOpen) setCurrentIndex(0);
-        onOpenChange(newOpen);
-    };
+    useEffect(() => {
+        document.body.style.overflow = open ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [open]);
+
+    if (!open || images.length === 0) return null;
+
+    const handlePrev = () => setCurrentIndex((p) => (p - 1 + images.length) % images.length);
+    const handleNext = () => setCurrentIndex((p) => (p + 1) % images.length);
 
     return (
-        <Dialog open={open} onOpenChange={handleOpenChange}>
-            <DialogContent showCloseButton={false} className="p-0 gap-0 border-border bg-card overflow-hidden transition-all duration-300 max-w-[85rem] w-[100vw] max-h-[100vh] rounded-2xl">
-                <DialogDescription className="sr-only">
-                    Appendix viewer for {label}
-                </DialogDescription>
-                <div className="border-b border-border px-3 py-2 flex items-center justify-between shrink-0">
-                    <DialogTitle className="text-sm font-medium">
-                        {label}
-                    </DialogTitle>
-
-                    <Button variant="ghost" size="sm" className="h-7 w-7 p-0" onClick={() => onOpenChange(false)}>
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+            onClick={() => onOpenChange(false)}
+        >
+            <div
+                className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col w-[95vw] max-h-[95vh]"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
+                    <span className="text-sm font-medium text-foreground truncate pr-4">{label}</span>
+                    <button
+                        onClick={() => onOpenChange(false)}
+                        className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted transition text-muted-foreground hover:text-foreground shrink-0"
+                    >
                         <X size={14} />
-                    </Button>
+                    </button>
                 </div>
-                <div className="px-1 py-1 overflow-auto flex flex-col gap-1 max-h-[calc(100vh-4rem)]">
-                    <div className="relative bg-background border border-border rounded-xl p-0 flex-1 flex items-center justify-center">
+
+                {/* Image */}
+                <div className="flex-1 overflow-auto flex items-center justify-center bg-background p-2">
+                    <div className="relative w-full h-full max-h-[75vh]">
                         <Image
                             src={images[currentIndex]}
                             alt={`${label} - image ${currentIndex + 1} of ${images.length}`}
-                            className="max-w-full max-h-full object-contain"
-                            style={{ maxHeight: "95vh" }}
-                            width={1920}
-                            height={1080}
+                            fill
+                            sizes="95vw"
+                            className="object-contain rounded-lg"
                         />
                     </div>
-                    {hasMultiple && (
-                        <div className="flex items-center justify-between shrink-0">
-                            <Button variant="outline" className="h-10 px-6" onClick={handlePrev}>
-                                <ChevronLeft size={18} className="mr-2" />
-                                Previous
-                            </Button>
-
-                            <div className="text-xs text-muted-foreground bg-card border border-border px-4 py-2 rounded-lg">
-                                {currentIndex + 1} / {images.length}
-                            </div>
-
-                            <Button variant="outline" className="h-10 px-6" onClick={handleNext}>
-                                Next
-                                <ChevronRight size={18} className="ml-2" />
-                            </Button>
-                        </div>
-                    )}
                 </div>
-            </DialogContent>
-        </Dialog>
+
+                {/* Navigation */}
+                {hasMultiple && (
+                    <div className="flex items-center justify-between px-4 py-3 shrink-0 border-t border-border">
+                        <button
+                            onClick={handlePrev}
+                            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-border text-sm hover:bg-muted transition"
+                        >
+                            <ChevronLeft size={16} />
+                            Previous
+                        </button>
+                        <span className="text-xs text-muted-foreground">
+                            {currentIndex + 1} / {images.length}
+                        </span>
+                        <button
+                            onClick={handleNext}
+                            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-border text-sm hover:bg-muted transition"
+                        >
+                            Next
+                            <ChevronRight size={16} />
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
     );
 }

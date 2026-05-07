@@ -20,7 +20,7 @@ export function CompanyProfile() {
 
     return (
         <section id="company-profile" className="w-full flex flex-col gap-0">
-            <HeroBanner chapter="Chapter II" title={<>Company<br />Profile</>} subtitle={OJT_INFO.company} quickFacts={QUICK_FACTS} description={`${OJT_INFO.companyDescription.slice(0, 120)}…`} />
+            <HeroBanner chapter="Chapter II" title={<>Company<br />Profile</>} subtitle={OJT_INFO.company} primaryColor="secondary" secondaryColor="primary" quickFacts={QUICK_FACTS} description={`${OJT_INFO.companyDescription.slice(0, 120)}…`} />
             <ChapterStrip chapter="Chapter II — Company Profile" sections={4} actions={chapterActions} icon={<Building2 size={14} className="text-secondary" />} />
         </section>
     );

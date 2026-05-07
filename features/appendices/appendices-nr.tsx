@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { FileText, Globe, Heart, Megaphone, Scale, Trophy, CheckCircle, Lock, Star, Ban, BookOpen } from "lucide-react";
 import { TerminalWindow } from "@/components/terminal";
 import Image from "next/image";
@@ -10,10 +11,104 @@ const appendixNImages = [
     "/images/appendices/appendix-n/pre-seminar-4-mother-portrait.png",
 ];
 
+const appendixNLabels = [
+    "Classmate during Pre-service Seminar",
+    "A photo with all my classmates in our section",
+    "A photo taken before the pre-service seminar",
+    "A special moment with my mom as she pins my badge",
+];
+
 const appendixOImages = [
     "/images/appendices/appendix-o/office-inside.png",
     "/images/appendices/appendix-o/office-outside.png",
 ];
+
+const appendixOLabels = [
+    "Office Inside View",
+    "Office Outside View",
+];
+
+interface InlineViewerProps {
+    images: string[];
+    labels?: string[];
+    startIndex: number;
+    title: string;
+    open: boolean;
+    onOpenChange: (open: boolean) => void;
+}
+
+function InlineViewer({ images, labels, startIndex, title, open, onOpenChange }: InlineViewerProps) {
+    const [currentIndex, setCurrentIndex] = useState(startIndex);
+
+    const handlePrev = () => setCurrentIndex((p) => (p - 1 + images.length) % images.length);
+    const handleNext = () => setCurrentIndex((p) => (p + 1) % images.length);
+
+    const handleOpenChange = (newOpen: boolean) => {
+        if (!newOpen) setCurrentIndex(startIndex);
+        onOpenChange(newOpen);
+    };
+
+    if (!open) return null;
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm" onClick={() => handleOpenChange(false)}>
+            <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-w-4xl w-[95vw] max-h-[95vh]" onClick={(e) => e.stopPropagation()}>
+                <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
+                    <span className="text-sm font-medium text-foreground">{title}</span>
+                    <button onClick={() => handleOpenChange(false)} className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted transition text-muted-foreground hover:text-foreground">
+                        ✕
+                    </button>
+                </div>
+                <div className="flex-1 overflow-auto flex items-center justify-center bg-background p-2">
+                    <div className="relative w-full h-full max-h-[75vh]">
+                        <Image src={images[currentIndex]} alt={labels?.[currentIndex] ?? `Image ${currentIndex + 1}`} fill sizes="95vw" className="object-contain rounded-lg" />
+                    </div>
+                </div>
+                {labels?.[currentIndex] && (
+                    <p className="text-[11px] text-center text-muted-foreground px-4 py-1 shrink-0 border-t border-border">
+                        {labels[currentIndex]}
+                    </p>
+                )}
+                {images.length > 1 && (
+                    <div className="flex items-center justify-between px-4 py-3 shrink-0 border-t border-border">
+                        <button onClick={handlePrev} className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-border text-sm hover:bg-muted transition">
+                            ← Previous
+                        </button>
+                        <span className="text-xs text-muted-foreground">
+                            {currentIndex + 1} / {images.length}
+                        </span>
+                        <button onClick={handleNext} className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-border text-sm hover:bg-muted transition">
+                            Next →
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+interface ClickableImageProps {
+    src: string;
+    alt: string;
+    caption: string;
+    onClick: () => void;
+}
+
+function ClickableImage({ src, alt, caption, onClick }: ClickableImageProps) {
+    return (
+        <div className="bg-background border border-border rounded-xl p-3 cursor-pointer group hover:border-primary/50 hover:shadow-md transition-all duration-200" onClick={onClick}>
+            <div className="relative overflow-hidden rounded-lg">
+                <Image src={src} alt={alt} width={800} height={600} className="w-full h-auto object-cover rounded-lg group-hover:scale-[1.02] transition-transform duration-300" />
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-200 rounded-lg flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[11px] font-semibold text-primary bg-background/90 px-2.5 py-1 rounded-full border border-primary/30">
+                        View
+                    </span>
+                </div>
+            </div>
+            <p className="text-[11px] text-muted-foreground mt-2 text-center">{caption}</p>
+        </div>
+    );
+}
 
 export function AppendicesNR() {
     return (
@@ -28,101 +123,82 @@ export function AppendicesNR() {
 }
 
 function AppendixNSection() {
+    const [viewerOpen, setViewerOpen] = useState(false);
+    const [startIndex, setStartIndex] = useState(0);
+
+    const openAt = (index: number) => {
+        setStartIndex(index);
+        setViewerOpen(true);
+    };
+
     return (
-        <TerminalWindow dataAos="fade-up" command="cat appendices/N.md">
-            <div className="p-6 md:p-10 flex flex-col gap-6">
-                <div data-aos="fade-right" className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                        <FileText size={20} className="text-primary" />
+        <>
+            <TerminalWindow dataAos="fade-up" command="cat appendices/N.md">
+                <div className="p-6 md:p-10 flex flex-col gap-6">
+                    <div data-aos="fade-right" className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                            <FileText size={20} className="text-primary" />
+                        </div>
+                        <div>
+                            <p className="text-[11px] text-primary font-bold tracking-[.2em] uppercase">Appendix N</p>
+                            <h3 className="text-[17px] font-bold text-foreground">Pictures during Pre-service Seminar</h3>
+                        </div>
                     </div>
-                    <div>
-                        <p className="text-[11px] text-primary font-bold tracking-[.2em] uppercase">Appendix N</p>
-                        <h3 className="text-[17px] font-bold text-foreground">Pictures during Pre-service Seminar</h3>
-                    </div>
-                </div>
-                <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-background border border-border rounded-xl p-3">
-                        <Image
-                            src={appendixNImages[0]}
-                            alt="Pre-service seminar - classmate"
-                            width={800}
-                            height={600}
-                            className="w-full h-auto object-cover rounded-lg"
-                        />
-                        <p className="text-[11px] text-muted-foreground mt-2 text-center">Classmate during Pre-service Seminar</p>
-                    </div>
-                    <div className="bg-background border border-border rounded-xl p-3">
-                        <Image
-                            src={appendixNImages[1]}
-                            alt="Pre-service seminar - classmate"
-                            width={800}
-                            height={600}
-                            className="w-full h-auto object-cover rounded-lg"
-                        />
-                        <p className="text-[11px] text-muted-foreground mt-2 text-center">A photo with all my classmates in our section</p>
-                    </div>
-                    <div className="bg-background border border-border rounded-xl p-3">
-                        <Image
-                            src={appendixNImages[2]}
-                            alt="Pre-service seminar - mother portrait"
-                            width={600}
-                            height={800}
-                            className="w-full h-auto object-cover rounded-lg"
-                        />
-                        <p className="text-[11px] text-muted-foreground mt-2 text-center">A photo taken before the pre-service seminar</p>
-                    </div>
-                    <div className="bg-background border border-border rounded-xl p-3">
-                        <Image
-                            src={appendixNImages[3]}
-                            alt="Pre-service seminar - mother portrait"
-                            width={600}
-                            height={800}
-                            className="w-full h-auto object-cover rounded-lg"
-                        />
-                        <p className="text-[11px] text-muted-foreground mt-2 text-center">A special moment with my mom as she pins my badge</p>
+                    <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {appendixNImages.map((src, idx) => (
+                            <ClickableImage
+                                key={idx}
+                                src={src}
+                                alt={appendixNLabels[idx]}
+                                caption={appendixNLabels[idx]}
+                                onClick={() => openAt(idx)}
+                            />
+                        ))}
                     </div>
                 </div>
-            </div>
-        </TerminalWindow>
+            </TerminalWindow>
+
+            <InlineViewer images={appendixNImages} labels={appendixNLabels} startIndex={startIndex} title="Appendix N – Pre-service Seminar" open={viewerOpen} onOpenChange={setViewerOpen} />
+        </>
     );
 }
 
 function AppendixOSection() {
+    const [viewerOpen, setViewerOpen] = useState(false);
+    const [startIndex, setStartIndex] = useState(0);
+
+    const openAt = (index: number) => {
+        setStartIndex(index);
+        setViewerOpen(true);
+    };
+
     return (
-        <TerminalWindow dataAos="fade-up" command="cat appendices/O.md">
-            <div className="p-6 md:p-10 flex flex-col gap-6">
-                <div data-aos="fade-right" className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                        <FileText size={20} className="text-primary" />
+        <>
+            <TerminalWindow dataAos="fade-up" command="cat appendices/O.md">
+                <div className="p-6 md:p-10 flex flex-col gap-6">
+                    <div data-aos="fade-right" className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                            <FileText size={20} className="text-primary" />
+                        </div>
+                        <div>
+                            <p className="text-[11px] text-primary font-bold tracking-[.2em] uppercase">Appendix O</p>
+                            <h3 className="text-[17px] font-bold text-foreground">Pictures during Office Works</h3>
+                        </div>
                     </div>
-                    <div>
-                        <p className="text-[11px] text-primary font-bold tracking-[.2em] uppercase">Appendix O</p>
-                        <h3 className="text-[17px] font-bold text-foreground">Pictures during Office Works</h3>
-                    </div>
-                </div>
-                <div data-aos="fade-up">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {appendixOImages.map((img, idx) => (
-                            <div key={idx} className="bg-background border border-border rounded-xl p-3">
-                                <Image
-                                    src={img}
-                                    alt={`Office work - image ${idx + 1}`}
-                                    width={800}
-                                    height={600}
-                                    className="w-full h-auto object-cover rounded-lg"
-                                />
-                                <p className="text-[11px] text-muted-foreground mt-2 text-center">
-                                    {idx === 0 ? "Office Inside View" : "Office Outside View"}
-                                </p>
-                            </div>
-                        ))}
+                    <div data-aos="fade-up">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {appendixOImages.map((src, idx) => (
+                                <ClickableImage key={idx} src={src} alt={appendixOLabels[idx]} caption={appendixOLabels[idx]} onClick={() => openAt(idx)} />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </TerminalWindow>
+            </TerminalWindow>
+
+            <InlineViewer images={appendixOImages} labels={appendixOLabels} startIndex={startIndex} title="Appendix O – Office Works" open={viewerOpen} onOpenChange={setViewerOpen} />
+        </>
     );
 }
-
 
 function AppendixPSection() {
     const ethics = [
@@ -182,6 +258,7 @@ function AppendixPSection() {
         </TerminalWindow>
     );
 }
+
 function AppendixQSection() {
     return (
         <TerminalWindow dataAos="fade-up" command="cat appendices/Q.md">
@@ -253,56 +330,16 @@ function AppendixRSection() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-border">
-                                <tr>
-                                    <td className="p-3 font-medium">1. Quality of Content</td>
-                                    <td className="p-3">60%</td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 text-muted-foreground">Grammar</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 text-muted-foreground">Organization</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 font-medium">2. Quality of Format</td>
-                                    <td className="p-3">40%</td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 text-muted-foreground">Spacing</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 text-muted-foreground">Margins</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 text-muted-foreground">Heading</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 text-muted-foreground">Typeset & Paging</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 ">Tables and Pictures</td>
-                                    <td className="p-3"></td>
-                                    <td className="p-3"></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-3 font-semibold">General Average</td>
-                                    <td className="p-3">100%</td>
-                                    <td className="p-3"></td>
-                                </tr>
+                                <tr><td className="p-3 font-medium">1. Quality of Content</td><td className="p-3">60%</td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Grammar</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Organization</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 font-medium">2. Quality of Format</td><td className="p-3">40%</td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Spacing</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Margins</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Heading</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Typeset & Paging</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 text-muted-foreground">Tables and Pictures</td><td className="p-3"></td><td className="p-3"></td></tr>
+                                <tr><td className="p-3 font-semibold">General Average</td><td className="p-3">100%</td><td className="p-3"></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -312,6 +349,6 @@ function AppendixRSection() {
                     </p>
                 </div>
             </div>
-        </TerminalWindow >
+        </TerminalWindow>
     );
 }

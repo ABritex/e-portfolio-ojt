@@ -11,6 +11,13 @@ export default function Home() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        const hasShownLoading = sessionStorage.getItem('hasShownLoading')
+        if (hasShownLoading) {
+            setIsLoading(false)
+            document.body.style.overflow = ''
+            return
+        }
+        sessionStorage.setItem('hasShownLoading', 'true')
         document.body.style.overflow = 'hidden'
         const timer = setTimeout(() => {
             setIsExiting(true)

@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const socials = [
-    { label: "GitHub", icon: "/icons/github.svg", href: "https://github.com" },
-    { label: "YouTube", icon: "/icons/youtube.svg", href: "https://youtube.com" },
-    { label: "Facebook", icon: "/icons/facebook.svg", href: "https://facebook.com" },
+    { label: "GitHub", icon: "/icons/github.svg", href: "https://github.com/ABritex" },
+    { label: "YouTube", icon: "/icons/youtube.svg", href: "https://www.youtube.com/@ABr1tex" },
+    { label: "Facebook", icon: "/icons/facebook.svg", href: "https://www.facebook.com/abeleda123/" },
 ];
 
 const ctas = [

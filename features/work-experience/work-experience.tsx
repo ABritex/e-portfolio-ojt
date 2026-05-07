@@ -35,7 +35,7 @@ export function WorkExperience() {
 
     return (
         <section id="work-experience" className="w-full flex flex-col gap-0">
-            <HeroBanner chapter="Chapter III" title={<>Work<br />Experience</>} subtitle="Documentation of tasks, hours, and analysis throughout the training" quickFacts={quickFacts} />
+            <HeroBanner chapter="Chapter III" title={<>Work<br />Experience</>} subtitle="Documentation of tasks, hours, and analysis throughout the training" primaryColor="accent" secondaryColor="primary" quickFacts={quickFacts} />
             <ChapterStrip chapter="Chapter III — Work Experience" sections={4} actions={chapterActions} icon={icon} />
         </section>
     );

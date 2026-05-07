@@ -18,7 +18,7 @@ export function Appendices() {
 
     return (
         <section id="appendices" className="w-full flex flex-col gap-0">
-            <HeroBanner chapter="Chapter V" title={<>Appendices<br />& Records.</>} subtitle="Supporting documents — the complete paperwork of the internship journey." quickFacts={QUICK_FACTS} description="Forms. Certificates. Records. Documentation." />
+            <HeroBanner chapter="Chapter V" title={<>Appendices<br />& Records.</>} subtitle="Supporting documents — the complete paperwork of the internship journey." primaryColor="secondary" secondaryColor="accent" quickFacts={QUICK_FACTS} description="Forms. Certificates. Records. Documentation." />
             <ChapterStrip chapter="Chapter V — Appendices" sections={2} actions={chapterActions} icon={<FileText size={14} className="text-secondary" />} />
         </section>
     );

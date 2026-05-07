@@ -27,7 +27,7 @@ const chapterActions = [
 export function Introduction() {
     return (
         <section id="introduction" className="w-full flex flex-col gap-0">
-            <HeroBanner chapter="Chapter I" title="Introduction" subtitle="Foundation and Framework of the Internship Program" quickFacts={quickFacts} />
+            <HeroBanner chapter="Chapter I" title="Introduction" subtitle="Foundation and Framework of the Internship Program" primaryColor="primary" secondaryColor="accent" quickFacts={quickFacts} />
             <ChapterStrip chapter="Chapter I — Introduction" sections={3} actions={chapterActions} icon={<FileText className="text-primary" />} />
             <div data-aos="fade-up" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 mt-1">
                 <span className="text-[11px] text-muted-foreground/50">
