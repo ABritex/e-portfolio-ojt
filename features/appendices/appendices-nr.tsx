@@ -59,11 +59,15 @@ function InlineViewer({ images, labels, startIndex, title, open, onOpenChange }:
                         ✕
                     </button>
                 </div>
-                <div className="flex-1 overflow-auto flex items-center justify-center bg-background p-2">
-                    <div className="relative w-full h-full max-h-[75vh]">
-                        <Image src={images[currentIndex]} alt={labels?.[currentIndex] ?? `Image ${currentIndex + 1}`} fill sizes="95vw" className="object-contain rounded-lg" />
+                <div className="flex-1 overflow-auto flex items-center justify-center bg-background p-2 min-h-0">
+                    <div className="relative w-full max-h-[75vh] flex items-center justify-center">
+                        <Image src={images[currentIndex]} alt={labels?.[currentIndex] ?? `Image ${currentIndex + 1}`} width={800} height={600} sizes="95vw" className="object-contain rounded-lg max-h-[75vh] w-auto" />
                     </div>
                 </div>
+                {/* Image counter */}
+                <p className="text-[11px] text-center text-muted-foreground px-4 py-1 shrink-0 border-t border-border">
+                    {currentIndex + 1} / {images.length}
+                </p>
                 {labels?.[currentIndex] && (
                     <p className="text-[11px] text-center text-muted-foreground px-4 py-1 shrink-0 border-t border-border">
                         {labels[currentIndex]}
@@ -74,9 +78,6 @@ function InlineViewer({ images, labels, startIndex, title, open, onOpenChange }:
                         <button onClick={handlePrev} className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-border text-sm hover:bg-muted transition">
                             ← Previous
                         </button>
-                        <span className="text-xs text-muted-foreground">
-                            {currentIndex + 1} / {images.length}
-                        </span>
                         <button onClick={handleNext} className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-border text-sm hover:bg-muted transition">
                             Next →
                         </button>
