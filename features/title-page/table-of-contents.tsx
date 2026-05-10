@@ -93,7 +93,7 @@ function AppendicesGrid() {
 
             <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                 {APPENDICES_FULL.map((a) => (
-                    <a key={a.id} href={`/ojt/${a.id}`} className="group flex items-start gap-3 rounded-xl border border-border bg-card px-5 py-3.5 hover:border-secondary/30 hover:bg-muted/30 transition-all duration-150">
+                    <a key={a.id} href="/appendices#appendices-am" className="group flex items-start gap-3 rounded-xl border border-border bg-card px-5 py-3.5 hover:border-secondary/30 hover:bg-muted/30 transition-all duration-150">
                         <span className="shrink-0 mt-0.5 text-[9px] font-bold tracking-widest px-1.5 py-0.5 rounded bg-secondary/10 text-secondary border border-secondary/20">
                             {a.label.replace("Appendix ", "")}
                         </span>

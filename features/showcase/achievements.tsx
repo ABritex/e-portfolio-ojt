@@ -166,119 +166,119 @@ export function Achievements() {
                                 </div>
                             )}
 
-                                {/* Entry */}
-                                <div data-aos="fade-up" className={`relative ${marginBottom}`}>
-                                    {/* Dot */}
-                                    <div
-                                        className={`absolute -left-[24px] top-5 w-3.5 h-3.5 rounded-full border-2 border-card ${p.dot} z-10`}
-                                    />
+                            {/* Entry */}
+                            <div data-aos="fade-up" className={`relative ${marginBottom}`}>
+                                {/* Dot */}
+                                <div
+                                    className={`absolute -left-[24px] top-5 w-3.5 h-3.5 rounded-full border-2 border-card ${p.dot} z-10`}
+                                />
 
-                                    {/* Card */}
-                                    <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-border transition-all duration-300">
+                                {/* Card */}
+                                <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-border transition-all duration-300">
 
-                                        {/* Cover image */}
-                                        <div className="relative w-full h-36 bg-muted/20">
-                                            {p.cover && (
+                                    {/* Cover image */}
+                                    <div className="relative w-full h-36 bg-muted/20">
+                                        {p.cover && (
+                                            <Image
+                                                src={p.cover}
+                                                alt={`${p.title} cover`}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        )}
+
+                                        {/* Logo — bottom-left over cover */}
+                                        <div className="absolute bottom-3 left-3 w-9 h-9 rounded-lg bg-card border border-border/60 overflow-hidden flex items-center justify-center shadow-sm">
+                                            {p.logo ? (
                                                 <Image
-                                                    src={p.cover}
-                                                    alt={`${p.title} cover`}
-                                                    fill
-                                                    className="object-cover"
+                                                    src={p.logo}
+                                                    alt={`${p.title} logo`}
+                                                    width={36}
+                                                    height={36}
+                                                    className="object-contain"
                                                 />
+                                            ) : (
+                                                <span className="text-lg">{p.fallbackIcon}</span>
                                             )}
+                                        </div>
 
-                                            {/* Logo — bottom-left over cover */}
-                                            <div className="absolute bottom-3 left-3 w-9 h-9 rounded-lg bg-card border border-border/60 overflow-hidden flex items-center justify-center shadow-sm">
-                                                {p.logo ? (
-                                                    <Image
-                                                        src={p.logo}
-                                                        alt={`${p.title} logo`}
-                                                        width={36}
-                                                        height={36}
-                                                        className="object-contain"
-                                                    />
-                                                ) : (
-                                                    <span className="text-lg">{p.fallbackIcon}</span>
-                                                )}
-                                            </div>
+                                        {/* Badges — top-right over cover */}
+                                        <div className="absolute top-2.5 right-3 flex gap-1.5">
+                                            {p.status === "postponed" && (
+                                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-600 border border-amber-500/40">
+                                                    postponed
+                                                </span>
+                                            )}
+                                            {!p.status && p.liveUrl && (
+                                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#E1F5EE] text-[#0F6E56] border border-[#5DCAA5]">
+                                                    ● live
+                                                </span>
+                                            )}
+                                            {p.githubUrl && (
+                                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-card/90 text-muted-foreground border border-border/60">
+                                                    open source
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
 
-                                            {/* Badges — top-right over cover */}
-                                            <div className="absolute top-2.5 right-3 flex gap-1.5">
-                                                {p.status === "postponed" && (
-                                                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-600 border border-amber-500/40">
-                                                        postponed
+                                    {/* Card body */}
+                                    <div className="p-5">
+                                        <div className="mb-2">
+                                            <p className="text-[14px] font-semibold text-foreground">{p.title}</p>
+                                            <p className="text-[10px] font-mono text-muted-foreground/40 mt-0.5">{p.period}</p>
+                                        </div>
+                                        <p className="text-[12px] text-muted-foreground leading-relaxed mb-4">
+                                            {p.desc}
+                                        </p>
+
+                                        <div className="border-t border-border/40 pt-3 mb-3">
+                                            <div className="flex flex-wrap gap-1.5">
+                                                {p.techs.map((t) => (
+                                                    <span
+                                                        key={t}
+                                                        className="text-[10px] font-mono px-2 py-0.5 bg-muted/30 border border-border/40 rounded text-muted-foreground"
+                                                    >
+                                                        {t}
                                                     </span>
-                                                )}
-                                                {!p.status && p.liveUrl && (
-                                                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#E1F5EE] text-[#0F6E56] border border-[#5DCAA5]">
-                                                        ● live
-                                                    </span>
-                                                )}
-                                                {p.githubUrl && (
-                                                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-card/90 text-muted-foreground border border-border/60">
-                                                        open source
-                                                    </span>
-                                                )}
+                                                ))}
                                             </div>
                                         </div>
 
-                                        {/* Card body */}
-                                        <div className="p-5">
-                                            <div className="mb-2">
-                                                <p className="text-[14px] font-semibold text-foreground">{p.title}</p>
-                                                <p className="text-[10px] font-mono text-muted-foreground/40 mt-0.5">{p.period}</p>
-                                            </div>
-                                            <p className="text-[12px] text-muted-foreground leading-relaxed mb-4">
-                                                {p.desc}
-                                            </p>
-
-                                            <div className="border-t border-border/40 pt-3 mb-3">
-                                                <div className="flex flex-wrap gap-1.5">
-                                                    {p.techs.map((t) => (
-                                                        <span
-                                                            key={t}
-                                                            className="text-[10px] font-mono px-2 py-0.5 bg-muted/30 border border-border/40 rounded text-muted-foreground"
-                                                        >
-                                                            {t}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            <div className="flex gap-2">
-                                                {p.status !== "postponed" && p.liveUrl && (
-                                                    <a
-                                                        href={p.liveUrl}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-1.5 text-[11px] font-mono px-3 py-1.5 rounded-md bg-[#E1F5EE] text-[#0F6E56] border border-[#5DCAA5] hover:opacity-80 transition-opacity"
-                                                    >
-                                                        ↗ View live
-                                                    </a>
-                                                )}
-                                                {p.githubUrl && (
-                                                    <a
-                                                        href={p.githubUrl}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-1.5 text-[11px] font-mono px-3 py-1.5 rounded-md bg-muted/30 text-muted-foreground border border-border/40 hover:border-border hover:text-foreground transition-all"
-                                                    >
-                                                        <Image src="/icons/github.svg" alt="GitHub" width={12} height={12} />
-                                                        GitHub
-                                                    </a>
-                                                )}
-{p.status === "postponed" && (
-                                                    <span className="text-[11px] font-mono px-3 py-1.5 rounded-md bg-amber-500/20 text-amber-600 border border-amber-500/40">
-                                                        TBD
-                                                    </span>
-                                                )}
-                                            </div>
+                                        <div className="flex gap-2">
+                                            {p.status !== "postponed" && p.liveUrl && (
+                                                <a
+                                                    href={p.liveUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center gap-1.5 text-[11px] font-mono px-3 py-1.5 rounded-md bg-[#E1F5EE] text-[#0F6E56] border border-[#5DCAA5] hover:opacity-80 transition-opacity"
+                                                >
+                                                    ↗ View live
+                                                </a>
+                                            )}
+                                            {p.githubUrl && (
+                                                <a
+                                                    href={p.githubUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center gap-1.5 text-[11px] font-mono px-3 py-1.5 rounded-md bg-muted/30 text-muted-foreground border border-border/40 hover:border-border hover:text-foreground transition-all"
+                                                >
+                                                    <Image src="/icons/github.svg" alt="GitHub" width={12} height={12} />
+                                                    GitHub
+                                                </a>
+                                            )}
+                                            {p.status === "postponed" && (
+                                                <span className="text-[11px] font-mono px-3 py-1.5 rounded-md bg-amber-500/20 text-amber-600 border border-amber-500/40">
+                                                    TBD
+                                                </span>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        );
-                    })}
+                        </div>
+                    );
+                })}
             </div>
         </section>
     );

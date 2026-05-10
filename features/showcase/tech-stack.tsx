@@ -3,12 +3,12 @@ import { useState } from "react";
 import { TECH_CATEGORIES } from "@/data/portfolio";
 import { SkillBar } from "./skill-bar";
 import { SectionHeader, Divider, TerminalWindow } from "@/components/terminal";
-import Image from "next/image";
+import { Code, Server, Container } from "lucide-react";
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
-    frontend: <Image src="/icons/code.svg" alt="Frontend" width={14} height={14} />,
-    backend: <Image src="/icons/server.svg" alt="Backend" width={14} height={14} />,
-    devops: <Image src="/icons/container.svg" alt="DevOps" width={14} height={14} />,
+    frontend: <Code className="w-3.5 h-3.5" />,
+    backend: <Server className="w-3.5 h-3.5" />,
+    devops: <Container className="w-3.5 h-3.5" />,
 };
 
 export function TechStack() {

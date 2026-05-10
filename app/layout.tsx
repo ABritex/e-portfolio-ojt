@@ -24,6 +24,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: "Nicholas Abeleda | OJT PORTFOLIO",
     description: "Portfolio of Nicholas Abeleda",
+    openGraph: {
+        title: "Nicholas Abeleda | OJT PORTFOLIO",
+        description: "Portfolio of Nicholas Abeleda",
+        url: "https://e-portfolio-nics.vercel.app",
+        siteName: "Nicholas Abeleda Portfolio",
+        images: [
+            {
+                url: "/images/background.png",
+                width: 1920,
+                height: 1080,
+                alt: "Nicholas Abeleda OJT Portfolio",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Nicholas Abeleda | OJT PORTFOLIO",
+        description: "Portfolio of Nicholas Abeleda",
+        images: ["/images/background.png"],
+    },
 };
 
 export default function RootLayout({

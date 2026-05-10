@@ -17,15 +17,15 @@ const TOC_STRUCTURE = [
         items: [
             {
                 id: "ch1-a", label: "A. Importance of Internship",
-                href: "/ojt/ch1#importance", subs: [],
+                href: "/introduction#importance", subs: [],
             },
             {
                 id: "ch1-b", label: "B. Objectives of Internship",
-                href: "/ojt/ch1#objectives", subs: [],
+                href: "/introduction#objectives", subs: [],
             },
             {
                 id: "ch1-c", label: "C. Time and Place",
-                href: "/ojt/ch1#time-place", subs: [],
+                href: "/introduction#time-place", subs: [],
             },
         ],
     },
@@ -35,19 +35,19 @@ const TOC_STRUCTURE = [
         items: [
             {
                 id: "ch2-a", label: "1. Nature of the Agency",
-                href: "/ojt/ch2#nature", subs: [],
+                href: "/company-profile#cp-nature", subs: [],
             },
             {
                 id: "ch2-b", label: "2. Mission / Vision / Goal Statement",
-                href: "/ojt/ch2#mission", subs: [],
+                href: "/company-profile#cp-mission", subs: [],
             },
             {
                 id: "ch2-c", label: "3. History / Background of the Agency",
-                href: "/ojt/ch2#history", subs: [],
+                href: "/company-profile#cp-history", subs: [],
             },
             {
                 id: "ch2-d", label: "4. Organizational Structure",
-                href: "/ojt/ch2#org-chart", subs: [],
+                href: "/company-profile#cp-org", subs: [],
             },
         ],
     },
@@ -57,19 +57,19 @@ const TOC_STRUCTURE = [
         items: [
             {
                 id: "ch3-a", label: "1. Weekly Accomplishment Report",
-                href: "/ojt/ch3#weekly", subs: [],
+                href: "/work-experience#we-weekly", subs: [],
             },
             {
                 id: "ch3-b", label: "2. Daily Time Record",
-                href: "/ojt/ch3#dtr", subs: [],
+                href: "/work-experience#we-dtr", subs: [],
             },
             {
                 id: "ch3-c", label: "3. Internship Progress Report",
-                href: "/ojt/ch3#progress", subs: [],
+                href: "/work-experience#we-progress", subs: [],
             },
             {
                 id: "ch3-d", label: "4. Internship Analysis Report",
-                href: "/ojt/ch3#analysis", subs: [],
+                href: "/work-experience#we-analysis", subs: [],
             },
         ],
     },
@@ -79,7 +79,7 @@ const TOC_STRUCTURE = [
         items: [
             {
                 id: "ch4-a", label: "A. Student Internship Evaluation Form",
-                href: "/ojt/ch4#evaluation", subs: [],
+                href: "/assessment", subs: [],
             },
         ],
     },
