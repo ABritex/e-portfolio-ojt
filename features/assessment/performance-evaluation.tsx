@@ -17,7 +17,7 @@ export function EvaluationForm() {
         { role: "Student Intern", name: "Nicholas John C. Abeleda", initials: "NJA", color: "text-primary border-primary/20 bg-primary/5" },
         { role: "Peer", name: "Curt David T. Gamil", initials: "CDG", color: "text-accent border-accent/20 bg-accent/5" },
         { role: "Student Internship Coordinator", name: "Ailen B. Garcia, EdD, DIT", initials: "ABG", color: "text-secondary border-secondary/20 bg-secondary/5" },
-        { role: "Agency Supervisor", name: "Mary Rosds S. Cortez", initials: "MRC", color: "text-primary border-primary/20 bg-primary/5" },
+        { role: "Agency Supervisor", name: "Mary Rose S. Cortez", initials: "MRC", color: "text-primary border-primary/20 bg-primary/5" },
     ];
 
     const evalImages = [

@@ -14,7 +14,6 @@ export default function Home() {
         const hasShownLoading = sessionStorage.getItem('hasShownLoading')
         if (hasShownLoading) {
             setIsLoading(false)
-            document.body.style.overflow = ''
             return
         }
         sessionStorage.setItem('hasShownLoading', 'true')
@@ -51,7 +50,6 @@ export default function Home() {
             <div className="min-h-screen flex flex-col items-center justify-center px-8 py-10">
                 <OJTNarrative />
             </div>
-
         </div>
     )
 }

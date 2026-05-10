@@ -1,6 +1,6 @@
 "use client";
 
-import { Achievements, TechStack, ToolsGrid } from "@/features/showcase";
+import { Achievements, TechStack, ToolsGrid, WebcamPixelGridDemo } from "@/features/showcase";
 import Header from "@/components/header";
 
 export default function Showcase() {
@@ -15,6 +15,9 @@ export default function Showcase() {
             </div>
             <div className="flex flex-col items-center justify-center px-8 py-10">
                 <Achievements />
+            </div>
+            <div className="flex flex-col items-center justify-center px-8 py-10">
+                <WebcamPixelGridDemo />
             </div>
         </div>
     );

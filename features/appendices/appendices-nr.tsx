@@ -117,7 +117,6 @@ export function AppendicesNR() {
             <AppendixNSection />
             <AppendixOSection />
             <AppendixPSection />
-            <AppendixQSection />
             <AppendixRSection />
         </section>
     );
@@ -254,29 +253,6 @@ function AppendixPSection() {
                             </div>
                         </div>
                     ))}
-                </div>
-            </div>
-        </TerminalWindow>
-    );
-}
-
-function AppendixQSection() {
-    return (
-        <TerminalWindow dataAos="fade-up" command="cat appendices/Q.md">
-            <div className="p-6 md:p-10 flex flex-col gap-6">
-                <div data-aos="fade-right" className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                        <FileText size={20} className="text-primary" />
-                    </div>
-                    <div>
-                        <p className="text-[11px] text-primary font-bold tracking-[.2em] uppercase">Appendix Q</p>
-                        <h3 className="text-[17px] font-bold text-foreground">Curriculum Vitae</h3>
-                    </div>
-                </div>
-                <div data-aos="fade-up">
-                    <div className="bg-card border border-border rounded-2xl p-4 flex items-center justify-center h-40">
-                        <p className="text-muted-foreground">Content will be added later</p>
-                    </div>
                 </div>
             </div>
         </TerminalWindow>

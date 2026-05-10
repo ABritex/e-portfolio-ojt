@@ -5,7 +5,7 @@ import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, } from "@/components/ui/sidebar"
-import { BookOpen, LayoutDashboard, Images, Paperclip, Link, Mail, Captions, Building2, Briefcase, ClipboardCheck, Info } from "lucide-react"
+import { BookOpen, LayoutDashboard, Images, Paperclip, Link, Captions, Building2, Briefcase, ClipboardCheck, Info } from "lucide-react"
 
 const data = {
     navGroups: [
@@ -86,19 +86,10 @@ const data = {
     links: [
         {
             title: "Resume",
-            url: "/resume",
+            url: "/Nicholas-Resume.pdf",
             icon: <Link className="h-4 w-4" />,
-        },
-        {
-            title: "Email Me",
-            url: "/email",
-            icon: <Mail className="h-4 w-4" />,
-        },
-        // {
-        //     title: "GitHub",
-        //     url: "#",
-        //     icon: <Github className="h-4 w-4" />,
-        // },
+            download: true,
+        }
     ],
 }
 

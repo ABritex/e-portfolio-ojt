@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export function AppendicesAM() {
     const appendicesAM = APPENDICES_FULL.slice(0, 13);
+    const appendixQ = APPENDICES_FULL[16];
     const [viewerOpen, setViewerOpen] = useState(false);
     const [activeAppendix, setActiveAppendix] = useState<{ id: string; label: string } | null>(null);
 
@@ -30,7 +31,7 @@ export function AppendicesAM() {
                         </div>
                         <div>
                             <p className="text-[11px] text-secondary font-bold tracking-[.2em] uppercase">1.</p>
-                            <h3 className="text-[17px] font-bold text-foreground">Appendices A - M</h3>
+                            <h3 className="text-[17px] font-bold text-foreground">Appendices A - M & Q</h3>
                         </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -50,6 +51,22 @@ export function AppendicesAM() {
                                 </p>
                             </div>
                         ))}
+                        {appendixQ && (
+                            <div data-aos="fade-up"
+                                key={appendixQ.id}
+                                className="group bg-card border border-border rounded-2xl p-4 hover:border-secondary/30 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+                                onClick={() => handleAppendixClick(appendixQ.id, appendixQ.label)}
+                            >
+                                <div className="flex items-start justify-between mb-2">
+                                    <span className="text-[10px] font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded">
+                                        {appendixQ.label.replace("Appendix ", "")}
+                                    </span>
+                                </div>
+                                <p className="text-[12px] text-muted-foreground leading-snug">
+                                    {appendixQ.desc}
+                                </p>
+                            </div>
+                        )}
                     </div>
                     <p data-aos="fade-right" className="text-[10px] text-muted-foreground/25 border-t border-border pt-4">
                         <span className="text-secondary/30">▸</span> Chapter V · Section 1

@@ -25,6 +25,7 @@ export function NavSecondary({
         title: string
         url: string
         icon: React.ReactNode
+        download?: boolean
     }[]
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
     const pathname = usePathname()
@@ -38,7 +39,7 @@ export function NavSecondary({
                         return (
                             <SidebarMenuItem key={item.title}>
                                 <SidebarMenuButton asChild isActive={isActive}>
-                                    <a href={item.url}>
+                                    <a href={item.url} {...(item.download && { download: "" })}>
                                         {item.icon}
                                         <span>{item.title}</span>
                                     </a>

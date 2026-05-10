@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { BackgroundBeams } from "@/components/background-beams";
+
 type QuickFact = {
     label: string;
     value: string;
@@ -18,7 +21,6 @@ type HeroBannerProps = {
     actions?: React.ReactNode;
     primaryColor?: "primary" | "secondary" | "accent";
     secondaryColor?: "primary" | "secondary" | "accent";
-    className?: string;
 };
 
 export function HeroBanner({
@@ -31,8 +33,18 @@ export function HeroBanner({
     primaryColor = "primary",
     secondaryColor,
 }: HeroBannerProps) {
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+        checkDesktop();
+        window.addEventListener("resize", checkDesktop);
+        return () => window.removeEventListener("resize", checkDesktop);
+    }, []);
+
     return (
         <div data-aos="fade-up" className="relative w-full rounded-2xl overflow-hidden border border-border">
+            {isDesktop && <BackgroundBeams className="absolute inset-0 -z-10 opacity-60" />}
             <div
                 className="absolute inset-0"
                 style={{
@@ -80,11 +92,11 @@ export function HeroBanner({
 
                 {quickFacts && quickFacts.length > 0 && (
                     <div className="flex flex-wrap items-center justify-center gap-3 mt-2">
-{quickFacts.map((fact) => (
-                             <div
-                                 key={fact.key ?? fact.label}
-                                 className={`flex items-center gap-2.5 px-4 py-2 rounded-xl border ${fact.border} ${fact.bg}`}
-                             >
+                        {quickFacts.map((fact) => (
+                            <div
+                                key={fact.key ?? fact.label}
+                                className={`flex items-center gap-2.5 px-4 py-2 rounded-xl border ${fact.border} ${fact.bg}`}
+                            >
                                 <span className={`text-[14px] font-extrabold ${fact.color}`}>{fact.value}</span>
                                 <span className="text-[10px] text-muted-foreground tracking-widest uppercase">
                                     {fact.label}

@@ -15,21 +15,14 @@ export default function Header() {
                     { label: "title-page", cmd: "~/title-page" },
                     { label: "about", cmd: "~/about" },
                 ].map(({ label, cmd }) => (
-                    <a
-                        key={label}
-                        href={`${label}`}
-                        className="group flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground px-3 py-1.5 rounded transition-colors hover:bg-muted"
-                    >
+                    <a key={label} href={`${label}`} className="group flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground px-3 py-1.5 rounded transition-colors hover:bg-muted">
                         <span className="text-accent/50 group-hover:text-accent transition-colors">$</span>
                         {cmd}
                     </a>
                 ))}
             </nav>
 
-            <a
-                href="#contact"
-                className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground border border-border hover:border-primary/50 bg-card hover:bg-primary/5 px-4 py-2 rounded transition-all"
-            >
+            <a href="contact" className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground border border-border hover:border-primary/50 bg-card hover:bg-primary/5 px-4 py-2 rounded transition-all">
                 <span className="text-accent">$</span> contact me
             </a>
         </header>
