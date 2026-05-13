@@ -2,9 +2,19 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { SectionHeader, Divider, TerminalWindow } from "@/components/terminal";
 import { Mail, Send, Terminal, MapPin, Clock, CheckCircle2, XCircle } from "lucide-react";
 import { PERSON } from "@/data/portfolio";
+
+// ── EmailJS config — replace these ──────────────────────────────────────────
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;  // e.g. "template_xyz456"
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;   // e.g. "abcDEFghiJKL"
+// ────────────────────────────────────────────────────────────────────────────
+
+
+
 
 // ── Edit these ───────────────────────────────────────────────────────────────
 const CONTACT_LINKS = [
@@ -96,16 +106,39 @@ export default function Contact() {
         await delay(700);
 
         // TODO: replace with your actual form submission logic (e.g. Resend, EmailJS, etc.)
+        // DELETE this:
         const ok = true; // stub — swap with real fetch/action
 
-        if (ok) {
+        // REPLACE with this:
+        try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: form.name,
+                    from_email: form.email,
+                    subject: form.subject,
+                    message: form.message,
+                },
+                EMAILJS_PUBLIC_KEY
+            );
             pushLine(`✓ Message delivered successfully.`);
             setState("success");
             setForm({ name: "", email: "", subject: "", message: "" });
-        } else {
+        } catch (err) {
+            console.error("EmailJS error:", err);
             pushLine(`✗ Delivery failed. Try again or email directly.`);
             setState("error");
         }
+
+        // if (ok) {
+        //     pushLine(`✓ Message delivered successfully.`);
+        //     setState("success");
+        //     setForm({ name: "", email: "", subject: "", message: "" });
+        // } else {
+        //     pushLine(`✗ Delivery failed. Try again or email directly.`);
+        //     setState("error");
+        // }
     };
 
     const isLoading = state === "loading";
