@@ -7,16 +7,10 @@ import { SectionHeader, Divider, TerminalWindow } from "@/components/terminal";
 import { Mail, Send, Terminal, MapPin, Clock, CheckCircle2, XCircle } from "lucide-react";
 import { PERSON } from "@/data/portfolio";
 
-// ── EmailJS config — replace these ──────────────────────────────────────────
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;  // e.g. "template_xyz456"
-const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;   // e.g. "abcDEFghiJKL"
-// ────────────────────────────────────────────────────────────────────────────
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
-
-
-
-// ── Edit these ───────────────────────────────────────────────────────────────
 const CONTACT_LINKS = [
     {
         label: "Email",
@@ -51,7 +45,6 @@ const META = [
     { label: "Response Time", value: "Within 24–48 hrs", icon: <Clock size={12} />, color: "text-accent" },
     { label: "Status", value: "Open to opportunities", icon: <Terminal size={12} />, color: "text-secondary" },
 ];
-// ────────────────────────────────────────────────────────────────────────────
 
 const COLOR = {
     primary: {
@@ -95,7 +88,6 @@ export default function Contact() {
         setState("loading");
         setLines([]);
 
-        // Simulate terminal feedback
         pushLine(`$ send-mail --to ${form.email}`);
         await delay(400);
         pushLine(`> Validating fields...`);
@@ -105,11 +97,7 @@ export default function Contact() {
         pushLine(`> Connecting to mail server...`);
         await delay(700);
 
-        // TODO: replace with your actual form submission logic (e.g. Resend, EmailJS, etc.)
-        // DELETE this:
-        const ok = true; // stub — swap with real fetch/action
-
-        // REPLACE with this:
+        // const ok = true;
         try {
             await emailjs.send(
                 EMAILJS_SERVICE_ID,
@@ -164,13 +152,9 @@ export default function Contact() {
 
             <Divider icon={<Mail size={18} className="text-primary" />} />
 
-            {/* Meta bar */}
             <div data-aos="fade-up" className="flex flex-wrap gap-3">
                 {META.map((m) => (
-                    <div
-                        key={m.label}
-                        className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[11px]"
-                    >
+                    <div key={m.label} className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[11px]"   >
                         <span className={`${m.color} opacity-70`}>{m.icon}</span>
                         <span className="text-muted-foreground/40 tracking-widest uppercase">{m.label}:</span>
                         <span className={`${m.color} font-semibold`}>{m.value}</span>
@@ -180,50 +164,21 @@ export default function Contact() {
 
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6">
 
-                {/* ── Contact form ─────────────────────────────────────── */}
                 <TerminalWindow dataAos="fade-up" command="./contact.sh --interactive">
                     <form onSubmit={handleSubmit} className="p-6 md:p-10 flex flex-col gap-6">
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <Field
-                                label="name"
-                                type="text"
-                                placeholder="Your full name"
-                                value={form.name}
-                                required
-                                onChange={(v) => setForm((p) => ({ ...p, name: v }))}
-                            />
-                            <Field
-                                label="email"
-                                type="email"
-                                placeholder="you@domain.com"
-                                value={form.email}
-                                required
-                                onChange={(v) => setForm((p) => ({ ...p, email: v }))}
-                            />
+                            <Field label="name" type="text" placeholder="Your full name" value={form.name} required onChange={(v) => setForm((p) => ({ ...p, name: v }))} />
+                            <Field label="email" type="email" placeholder="you@domain.com" value={form.email} required onChange={(v) => setForm((p) => ({ ...p, email: v }))} />
                         </div>
 
-                        <Field
-                            label="subject"
-                            type="text"
-                            placeholder="What&apos;s this about?"
-                            value={form.subject}
-                            required
-                            onChange={(v) => setForm((p) => ({ ...p, subject: v }))}
-                        />
+                        <Field label="subject" type="text" placeholder="What&apos;s this about?" value={form.subject} required onChange={(v) => setForm((p) => ({ ...p, subject: v }))} />
 
                         <div className="flex flex-col gap-1.5">
                             <label className="text-[10px] tracking-[.2em] uppercase text-muted-foreground/40">
                                 <span className="text-accent">▸</span> message
                             </label>
-                            <textarea
-                                placeholder="Write your message here..."
-                                value={form.message}
-                                required
-                                rows={6}
-                                onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
-                                className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 text-[13px] text-foreground placeholder:text-muted-foreground/30 outline-none resize-none focus:ring-2 focus:ring-primary/30 focus:border-primary/60 transition-all duration-150"
-                            />
+                            <textarea placeholder="Write your message here..." value={form.message} required rows={6} onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))} className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 text-[13px] text-foreground placeholder:text-muted-foreground/30 outline-none resize-none focus:ring-2 focus:ring-primary/30 focus:border-primary/60 transition-all duration-150" />
                         </div>
 
                         {/* Terminal output */}
@@ -252,11 +207,7 @@ export default function Contact() {
                         )}
 
                         <div className="flex items-center gap-4">
-                            <button
-                                type="submit"
-                                disabled={isLoading}
-                                className="group flex items-center gap-2.5 rounded-xl bg-primary/10 border border-primary/30 hover:bg-primary/20 hover:border-primary/60 px-6 py-3 text-[13px] font-semibold text-primary transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
+                            <button type="submit" disabled={isLoading} className="group flex items-center gap-2.5 rounded-xl bg-primary/10 border border-primary/30 hover:bg-primary/20 hover:border-primary/60 px-6 py-3 text-[13px] font-semibold text-primary transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed">
                                 {isLoading ? (
                                     <>
                                         <span className="w-3.5 h-3.5 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
@@ -286,7 +237,6 @@ export default function Contact() {
                     </form>
                 </TerminalWindow>
 
-                {/* ── Sidebar: contact links ────────────────────────────── */}
                 <div className="flex flex-col gap-4">
                     {CONTACT_LINKS.map((link) => {
                         const c = link.color ? COLOR[link.color] : COLOR.primary;
@@ -324,7 +274,6 @@ export default function Contact() {
                         );
                     })}
 
-                    {/* Decorative availability card */}
                     <div data-aos="fade-left" className="mt-2 rounded-xl border border-border bg-card px-5 py-5 flex flex-col gap-3">
                         <div className="flex items-center gap-2">
                             <span className="relative flex w-2 h-2">
@@ -351,8 +300,6 @@ export default function Contact() {
         </section>
     );
 }
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
 
 function Field({
     label,
